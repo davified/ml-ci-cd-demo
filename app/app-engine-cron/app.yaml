@@ -1,0 +1,8 @@
+# Python3 is not available in google app engine
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT main:app
+api_version: 1
+
+runtime_config:
+  python_version: 3

@@ -1,0 +1,7 @@
+cron:
+- description: publish current bitcoin stock price every minute
+  url: /publish-bitcoin-price
+  schedule: every 1 mins
+  retry_parameters:
+    min_backoff_seconds: 10
+    max_doublings: 5

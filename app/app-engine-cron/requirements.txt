@@ -1,0 +1,7 @@
+bs4==0.0.1
+google-cloud-pubsub==0.30.1
+google-cloud-bigquery==0.29.0
+requests==2.18.4
+Flask==0.12.2
+gunicorn==19.7.1
+google-api-python-client
