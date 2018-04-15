@@ -15,7 +15,7 @@ def get_stock_price():
     current_stock_price = current_stock_price_tag.text
     print('current_stock_price: {}'.format(current_stock_price))
     return current_stock_price
-  except Error:
+  except:
     raise Exception('Bitcoin stock price not available')
   
 def create_topic(project, topic_name):
