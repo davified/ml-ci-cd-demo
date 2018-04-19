@@ -7,9 +7,9 @@
 3. Activate the virtual environment: `source .venv/bin/activate`
 4. Start coding!
 
-### App
+### Tasks
 
-
+Team board @ https://github.com/davified/ml-ci-cd-demo/projects/1
 
 ### Infrastructure
 
@@ -24,3 +24,12 @@ In `infrastructure/shell`, we keep a list of utility scripts. You need to `cd in
   - To delete Dataproc cluster: `./delete_dataproc_cluster.sh <name of cluster>`
   - To create Dataproc cluster: `./create_dataproc_cluster.sh <name of cluster>`
   - To open Datalab notebook on the dataproc cluster: `./open_data_lab.sh`
+
+### App
+
+#### Bitcoin price publisher
+- To deploy:
+  - cd ./app/app-engine-cron
+  - ./deploy_app.sh
+  - ./deploy_start_cron.sh
+- https://ml-ci-cd-demo.appspot.com/publish-bitcoin-price
