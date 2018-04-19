@@ -35,9 +35,9 @@ def publish_messages(project, topic_name, current_stock_price):
   data = u'bitcoin price'
   # Data must be a bytestring
   data = data.encode('utf-8')
+  print('Publishing message: {}'.format(data))
   publisher.publish(topic_path, data=data, time=time_now, price=current_stock_price)
 
-  print('Published message: {}'.format(data))
   
 def delete_topic(project, topic_name):
   client = pubsub.PublisherClient()

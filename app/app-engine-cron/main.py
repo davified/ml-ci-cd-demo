@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/publish-bitcoin-price')
 def get_stock_price():
   price = bitcoin_publisher.get_stock_price()
-  bitcoin_publisher.publish_messages('tw-data-engineering-demo', 'bitcoin-stock-price', price) # publish message
+  bitcoin_publisher.publish_messages('ml-ci-cd-demo', 'bitcoin_stock_price', price) # publish message
   return 'bitcoin price: {}'.format(price)
 
 @app.errorhandler(500)
