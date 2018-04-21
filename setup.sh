@@ -15,8 +15,8 @@ install_brew_package() {
   fi
 }
 
-install_brew_package terraform
-install_brew_package python3
+# install_brew_package terraform
+# install_brew_package python3
 
 # login to gcloud. this will open up a browser. follow instructions on browser 
 # gcloud auth application-default login
@@ -25,4 +25,8 @@ install_brew_package python3
 python3 -m venv .venv
 source .venv/bin/activate
 
-pip3 install -r ./app/bitcoin-app-engine-service/requirements.txt
+#pip3 install -r ./app/bitcoin-app-engine-service/requirements.txt
+pip3 install -r requirements_gcp.txt 
+
+project_name=$(basename $(pwd))
+python -m ipykernel install --user --name=${project_name}-2
