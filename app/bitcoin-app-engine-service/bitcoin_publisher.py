@@ -12,7 +12,7 @@ def get_stock_price():
   current_stock_price_tag = soup.find(class_="Trsdu(0.3s) Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(b)")
 
   try:
-    current_stock_price = current_stock_price_tag.text.replace(',','').split('.')[0] # removing decimals as a temporary fix
+    current_stock_price = current_stock_price_tag.text.replace(',','')
     print('current_stock_price: {}'.format(current_stock_price))
     return current_stock_price
   except:
