@@ -3,3 +3,4 @@ app/app-engine-ml-prediction-service
 .venv
 .venv_gcp
 .ipynb_checkpoints/
+gcp_ml_ci_cd_demo.json
