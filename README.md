@@ -15,7 +15,6 @@
 - GCP Project IAM - you've been added as a project owner to the ml-ci-cd-demo project. Once you accept the invitation via email you'd be able to provision/destroy resources on the project
 - Bitcoin price service
   - every GET request to https://ml-ci-cd-demo.appspot.com/publish-bitcoin-price publishes a message to the [`bitcoin_stock_price` pub/sub topic](https://console.cloud.google.com/cloudpubsub/topics/bitcoin_stock_price?project=ml-ci-cd-demo)
-  - 
 - Bugs
   - Pub/sub -> BigQuery
     - I tried to create a dataflow pipeline: pubsub -> dataflow -> bigquery (using a [template](https://cloud.google.com/dataflow/docs/templates/provided-templates#cloudpubsubtobigquery)), but i keep getting the following error: `Can not deserialize instance of com.google.api.services.bigquery.model.TableRow out of VALUE_NUMBER_FLOAT token
