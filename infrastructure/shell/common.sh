@@ -4,7 +4,7 @@
 set -e
 
 export project_id="ml-ci-cd-demo"
-export bucket_name="bitcoin_prices"
+export bucket_name="ml-ci-cd-demo"
 
 source ./configure_api_key.sh
 echo $GOOGLE_APPLICATION_CREDENTIALS
