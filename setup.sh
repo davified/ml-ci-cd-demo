@@ -16,12 +16,12 @@ fi
 if [[ `which gcloud` ]]; then
   echo "[INFO] OK found gcloud"
   echo "Setting gcloud components version to 175.0.0"
-  gcloud components update --version 175.0.0
+  # gcloud components update --version 175.0.0
 else
   brew tap caskroom/cask
   brew cask install google-cloud-sdk
 
-  gcloud components update --version 175.0.0
+  # gcloud components update --version 175.0.0
 fi
 
 # TODO: davidtan [2018-05-17] should we check and install specific version of conda? or will conda update conda do that?
