@@ -2,26 +2,19 @@
 
 # set -e
 
-if [[ $OSTYPE != "darwin"* ]]; then
-  echo "[INFO] Non-Mac OSX operating system detected"
-  echo "[TODO] Open http://continuum.io/downloads with your web browser"
-  echo "[TODO] Download the Python 3 installer for your OS"
-  echo "[TODO] Install Python 3 using all of the defaults for installation, except make sure to check 'Make Anaconda the default Python'"
-  echo "[INFO] Exiting..."
-  exit 0
-elif [[ $OSTYPE != "darwin"* ]]; then
-  https://repo.anaconda.com/archive/Anaconda3-5.1.0-MacOSX-x86_64.sh
+if [[ $CI == "true" ]]; then
+  anaconda_download_url="https://repo.anaconda.com/archive/Anaconda3-5.1.0-Linux-x86_64.sh"
+else
+  anaconda_download_url="https://repo.anaconda.com/archive/Anaconda3-5.1.0-MacOSX-x86_64.sh"
 fi
 
-# gcloud version | true
 if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then 
   rm -rf $HOME/google-cloud-sdk
   export CLOUDSDK_CORE_DISABLE_PROMPTS=1
   curl https://sdk.cloud.google.com | bash
+# gcloud components update --version 175.0.0 # may need to set gcloud to v175 to get gsutil to work
 fi
 export PATH=$PATH:$HOME/google-cloud-sdk/bin/
-
-# gcloud components update --version 175.0.0 # may need to set gcloud to v175 to get gsutil to work
 
 if [[ `which conda` ]]; then
   echo "[INFO] OK Found conda!"

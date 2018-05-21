@@ -1,4 +1,6 @@
 language: python
+env:
+  - CI=true
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
