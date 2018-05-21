@@ -16,6 +16,7 @@ jobs:
   include:
     - stage: train model
       script: 
+      - ls $HOME/anaconda3/bin
       - ./bin/get_data.sh
       - ./bin/train.sh scikit-model
 #     - stage: run statistical tests
