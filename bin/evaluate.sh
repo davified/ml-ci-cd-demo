@@ -10,6 +10,9 @@ fi
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
 
+echo "[INFO] Activating virtual environment"
+source activate ${virtual_environment_name}
+
 cd $1
 ./bin/evaluate.sh
 cd - > /dev/null # mute output
