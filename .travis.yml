@@ -16,6 +16,7 @@ jobs:
       - ./bin/get_data.sh
       - ./bin/train.sh scikit-model
       - ./bin/evaluate.sh scikit-model
+      - ./bin/upload_artifact.sh scikit-model
     - stage: deploy model
       script:
       - ./bin/deploy.sh scikit-model

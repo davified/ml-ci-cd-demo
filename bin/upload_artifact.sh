@@ -11,5 +11,5 @@ current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
 
 cd $1
-./bin/deploy.sh
+./bin/upload_artifact.sh
 cd - > /dev/null # mute output

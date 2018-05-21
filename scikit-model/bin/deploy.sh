@@ -8,14 +8,8 @@ set -e
 #     exit 1
 # fi
 
-source ./common.sh
-
-if ! gsutil ls | grep -q gs://${BUCKET}/; then
-  gsutil mb -l ${REGION} gs://${BUCKET}
-fi
-
-echo "[INFO] Copying model binaries to bucket"
-gsutil cp ./build/model.pkl gs://$BUCKET/model.pkl
+current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
+source ${current_directory}/common.sh
 
 model_status_code=$(gcloud beta ml-engine models list | grep -c ${MODEL_NAME} || true) # 1 if model exists, 0 otherwise
 if [[ ${model_status_code} == 0 ]]; then
