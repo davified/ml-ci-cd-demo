@@ -10,7 +10,8 @@ cache:
     - $HOME/anaconda3_installer
     - $HOME/anaconda3/envs/ml-ci-cd-demo
 before_install:
-  - echo $PATH
+  - echo "listing conda dir"; ls $HOME/anaconda3/bin
+  - if [[ -f $HOME/anaconda3/bin/conda ]]; then echo "[INFO] OK Found conda!"; fi
   - ./setup.sh
 jobs:
   include: 
@@ -18,10 +19,8 @@ jobs:
       script:
       - ./bin/get_data.sh
       - ./bin/train.sh scikit-model
-#     - stage: run statistical tests
-#       script: echo "initiate model statistical tests"
-#     - stage: deploy model to staging
-#       script: echo "initiate deploy-to-staging job"
+#       - echo "initiate model statistical tests"
+#       - echo "deploying model"
 #     - stage: staging smoke test
 #       script: echo "running smoke test"
 #     - stage: deploy model to production
