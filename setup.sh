@@ -28,7 +28,7 @@ else
   fi
 
   echo "[INFO] Running anaconda installation script..."
-  bash "$HOME/anaconda3_installer/install.sh" -b -p "$HOME/anaconda3"
+  bash "$HOME/anaconda3_installer/install.sh" -u -b -p "$HOME/anaconda3"
 fi
 
 if [[ ! -d "$HOME/anaconda3/envs/${virtual_environment_name}" ]]; then
