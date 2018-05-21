@@ -10,7 +10,7 @@ cache:
     - $HOME/anaconda3_installer
     - $HOME/anaconda3/envs/ml-ci-cd-demo
 before_install:
-  - echo "listing conda dir"; ls $HOME/anaconda3/bin
+  - echo 'listing conda dir'; ls $HOME/anaconda3/
   - if [[ -f $HOME/anaconda3/bin/conda ]]; then echo "[INFO] OK Found conda!"; fi
   - ./setup.sh
 jobs:
