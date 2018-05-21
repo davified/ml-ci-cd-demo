@@ -1,5 +1,6 @@
 env:
   - CI=true
+  - PATH=$HOME/google-cloud-sdk/bin:$HOME/anaconda3/bin:$PATH
 cache:
   directories:
     - $HOME/google-cloud-sdk
