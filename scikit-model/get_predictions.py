@@ -12,7 +12,7 @@ complete_results = []
 responses = service.projects().predict(
     name=name,
     body={'instances': [
-      [25, 'Private', 226802, '11th', 7, 'Never-married', 'Machine-op-inspct', 'Own-child', 'Black', 'Male', 0, 0, 40, 'United-States'],
+      [25, 'Private', 226802, '11th', 7, 'Never-married', 'Machine-op-inspct', 'Own-child', 'White', 'Male', 0, 0, 40, 'United-States'],
       [44, 'Private', 160323, 'Some-college', 10, 'Married-civ-spouse', 'Machine-op-inspct', 'Husband', 'Black', 'Male', 7688, 0, 40, 'United-States']
     ]}
 ).execute()

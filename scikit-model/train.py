@@ -126,4 +126,4 @@ pipeline = Pipeline([
 # Export the model to a file
 pickle.dump(pipeline, open('./build/model.pkl', 'wb'))
 
-print('Model trained and saved')
+print('Model trained and saved at {}/build'.format(os.getcwd()))
