@@ -10,7 +10,7 @@ cache:
     - $HOME/anaconda3_installer
     - $HOME/anaconda3/envs/ml-ci-cd-demo
 before_install:
-  - echo $OSTYPE
+  - echo $PATH
   - ./setup.sh
 jobs:
   include:
