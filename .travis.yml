@@ -1,3 +1,4 @@
+language: generic
 env:
   global:
     - CI=true
