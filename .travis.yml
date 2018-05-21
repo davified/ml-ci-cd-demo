@@ -3,17 +3,16 @@ cache:
   directories:
     - "$HOME/google-cloud-sdk/"
 before_install:
-  - gcloud version || true
-  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
-  - source /home/travis/google-cloud-sdk/path.bash.inc # Add gcloud to $PATH
+  - echo $OSTYPE
+  - ./setup.sh
 jobs:
   include:
     - stage: train model
       script: 
       - ./bin/get_data.sh
       - ./bin/train.sh scikit-model
-# - stage: run statistical tests
-#   script: echo "initiate model statistical tests"
+#     - stage: run statistical tests
+#       script: echo "initiate model statistical tests"
 #     - stage: deploy model to staging
 #       script: echo "initiate deploy-to-staging job"
 #     - stage: staging smoke test
