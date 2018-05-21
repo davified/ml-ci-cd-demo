@@ -10,9 +10,6 @@ fi
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
 
-echo "printing PATH for debugging purposes"
-echo $PATH
-
 echo "[INFO] Activating virtual environment"
 source activate ${virtual_environment_name}
 

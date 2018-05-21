@@ -14,8 +14,7 @@ if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
   curl https://sdk.cloud.google.com | bash
 # gcloud components update --version 175.0.0 # may need to set gcloud to v175 to get gsutil to work
 fi
-export PATH=$PATH:$HOME/google-cloud-sdk/bin/
-export PATH=$HOME/anaconda3/bin:$PATH
+export PATH=$HOME/google-cloud-sdk/bin:$HOME/anaconda3/bin:$PATH
 
 if [[ `which conda` ]]; then
   echo "[INFO] OK Found conda!"
