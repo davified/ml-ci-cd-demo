@@ -15,7 +15,7 @@ jobs:
       script:
       - ./bin/get_data.sh
       - ./bin/train.sh scikit-model
-      - echo 'placeholder: running statistical tests on model'
+      - ./bin/evaluate.sh scikit-model
     - stage: deploy model
       script:
       - ./bin/deploy.sh scikit-model
