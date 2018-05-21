@@ -1,29 +1,26 @@
 language: generic
 env:
+  matrix:
   - PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
+  global:
+  - secure=BT7kF14NkL11vxWmvAhQOQ/lnaaccp2pn5DSxzb3mdW3ThZUZjWddjO8B7hd2TKcMiuv1revaAJUQi9fmLeahlph5+N9j4pLSpy+an7OeLckwjBwopPgvDKT/rLpxlqy6B+0EYd9QUKh6/z4TbMaYg5cqhS4cZehGuCVyrUTpJ3saLU0TQpsisiP1dTqItazDWJm1DPBgzPPRhn/3BUKcwbSgUKmqVQbMLFKM2p9vdRNnKwc9cWvhCEe2jDYJyjcvnM0Z1fQwT8nbYG9HqDDppF3+/cMxtzhAwlRK0NWESZcml5+FdpHdhPQNY9sJHKBn8GNUhlVSItVuMpxj/KpozkDHsSaIxdVvAO667HIwGFABxIz4A76nYHIla2IYFXXmFjmliP7TDBiWFKAmwxLb/VxXRidWK9W5lAzYBu/wEOE6h3KqQ1SYk+RtWq1y4m2oQO+/vkOosqew1zef8T1zuWq9joPqNa/hvO3c6vtF/YutHRLO+tYaHQ5SGqbq10lxiRLShO+o/GC98ZkfVUhNFLGiWVtzIq0OOr3HaJgUzaG2jJwu1fT/hp4pznurrN4VP7yI7WTbJhm1+zCjr3/whfeTptV8RP0ndr6FeZCNkp9aI8AY62uMHqwA0+V8TY/mwP7xj4+MTvKrMqVnjj9Xqmuzjl7b3E3QvadUDz4Zu4=
 cache:
   directories:
-    - $HOME/google-cloud-sdk
-    - $HOME/miniconda3
-    - $HOME/miniconda3_installer
-  timeout: 1000 # this gives travis-CI sufficient time (up to ~16 minutes) to cache large conda directories
+  - "$HOME/google-cloud-sdk"
+  - "$HOME/miniconda3"
+  - "$HOME/miniconda3_installer"
+  timeout: 1000
 before_install:
-  - ./bin/setup.sh
+- "./bin/setup.sh"
 jobs:
-  include: 
-    - stage: train model
-      script:
-      - ./bin/get_data.sh
-      - ./bin/train.sh scikit-model
-      - ./bin/evaluate.sh scikit-model
-      - ./bin/upload_artifact.sh scikit-model
-    - stage: deploy model
-      script:
-      - ./bin/deploy.sh scikit-model
-      - echo 'smoke test for staging'
-#     - stage: deploy model to production
-#       if: branch = deploy-to-prod
-#       script: echo "initiate deploy-to-prod job"
-#     - stage: smoke test for production
-#       if: branch = deploy-to-prod
-#       script: echo "running smoke test"
+  include:
+  - stage: train model
+    script:
+    - "./bin/get_data.sh"
+    - "./bin/train.sh scikit-model"
+    - "./bin/evaluate.sh scikit-model"
+    - "./bin/upload_artifact.sh scikit-model"
+  - stage: deploy model
+    script:
+    - "./bin/deploy.sh scikit-model"
+    - echo 'smoke test for staging'
