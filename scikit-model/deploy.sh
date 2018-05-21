@@ -4,12 +4,12 @@ set -e
 
 source ./common.sh
 
-# if ! gsutil ls | grep -q gs://${BUCKET}/; then
-#   gsutil mb -l ${REGION} gs://${BUCKET}
-# fi
+if ! gsutil ls | grep -q gs://${BUCKET}/; then
+  gsutil mb -l ${REGION} gs://${BUCKET}
+fi
 
 echo "INFO: Copying model binaries to bucket"
-# gsutil cp ./build/model.pkl gs://$BUCKET/model.pkl
+gsutil cp ./build/model.pkl gs://$BUCKET/model.pkl
 
 echo "INFO: Creating model resource (i.e. a container for all versions of this model)" 
 # gcloud beta ml-engine models create ${MODEL_NAME} --regions ${REGION}  # note: this command is not idempotent. can only be run once
