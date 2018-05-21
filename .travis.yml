@@ -13,10 +13,9 @@ before_install:
   - echo $PATH
   - ./setup.sh
 jobs:
-  include:
+  include: 
     - stage: train model
-      script: 
-      - ls $HOME/anaconda3/bin
+      script:
       - ./bin/get_data.sh
       - ./bin/train.sh scikit-model
 #     - stage: run statistical tests

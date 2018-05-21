@@ -24,3 +24,10 @@ In `infrastructure/shell`, we keep a list of utility scripts. You need to `cd in
 
 ### Notes/log of any manual steps
 - Enable Google Cloud Resource Manager API by visiting: https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=ml-ci-ci-demo
+
+
+### Pros and Cons 
+
+#### Travis-CI
+- pros: easy to get started
+- cons: no file-whitelisting functionality. Even updating a README triggers the CI pipeline (i.e. the training of a new model)
