@@ -6,9 +6,9 @@ cache:
     - $HOME/google-cloud-sdk
     - $HOME/anaconda3
     - $HOME/anaconda3_installer
-  timeout: 1000 # 1000 secs, or ~16 minutes
+  timeout: 1000 # this gives travis-CI sufficient time (up to ~16 minutes) to cache large conda directories
 before_install:
-  - ./setup.sh
+  - ./bin/setup.sh
 jobs:
   include: 
     - stage: train model
@@ -19,8 +19,7 @@ jobs:
     - stage: deploy model
       script:
       - ./bin/deploy.sh scikit-model
-#     - stage: staging smoke test
-#       script: echo "running smoke test"
+      - echo 'smoke test for staging'
 #     - stage: deploy model to production
 #       if: branch = deploy-to-prod
 #       script: echo "initiate deploy-to-prod job"
