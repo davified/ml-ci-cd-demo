@@ -24,6 +24,7 @@ else
     echo "[INFO] Downloading anaconda installation script..."
     echo "[INFO] This is a 511MB file and will some time to complete..."
     echo "downloading 511mb file"
+    mkdir -p $HOME/anaconda3_installer
     curl ${anaconda_download_url} -o "$HOME/anaconda3_installer/install.sh"
   fi
 
