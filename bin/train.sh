@@ -7,6 +7,12 @@ if [[ $1 == '' ]]; then
   exit 1
 fi
 
+current_directory="$(dirname $(realpath $0))"
+source ${current_directory}/common.sh
+
+echo "[INFO] Activating virtual environment"
+source activate ${virtual_environment_name}
+
 cd $1
 ./bin/train.sh
 cd - > /dev/null # mute output
