@@ -1,0 +1,25 @@
+language: python
+cache:
+  directories:
+    - "$HOME/google-cloud-sdk/"
+script:
+  - gcloud version || true
+  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+  - source /home/travis/google-cloud-sdk/path.bash.inc # Add gcloud to $PATH
+  - gcloud version
+# jobs:
+#   include:
+#     - stage: train model
+#       script: echo "initiate model training job"
+#     - stage: run statistical tests
+#       script: echo "initiate model statistical tests"
+#     - stage: deploy model to staging
+#       script: echo "initiate deploy-to-staging job"
+#     - stage: staging smoke test
+#       script: echo "running smoke test"
+#     - stage: deploy model to production
+#       if: branch = deploy-to-prod
+#       script: echo "initiate deploy-to-prod job"
+#     - stage: smoke test for production
+#       if: branch = deploy-to-prod
+#       script: echo "running smoke test"
