@@ -16,7 +16,7 @@ if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
 fi
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/anaconda3/bin:$PATH
 
-if [[ `which conda` ]]; then
+if [[ -f $HOME/anaconda3/bin/conda ]]; then
   echo "[INFO] OK Found conda!"
 else
   if [[ ! -f "$HOME/anaconda3_installer/install.sh"  ]]; then
