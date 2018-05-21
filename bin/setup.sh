@@ -34,7 +34,7 @@ fi
 
 if [[ ! -d "$HOME/miniconda3/envs/${virtual_environment_name}" ]]; then
   echo "[INFO] Creating ${virtual_environment_name} virtual environment and installing dependencies..."
-  conda env create -f ${current_directory}/../environment.yml
+  conda env create -f ${project_directory}/environment.yml
 else 
   echo "[INFO] Installing dependencies..."
   conda env update

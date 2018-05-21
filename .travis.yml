@@ -1,11 +1,11 @@
 language: generic
 env:
-  - PATH=$HOME/google-cloud-sdk/bin:$HOME/anaconda3/bin:$PATH
+  - PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 cache:
   directories:
     - $HOME/google-cloud-sdk
-    - $HOME/anaconda3
-    - $HOME/anaconda3_installer
+    - $HOME/miniconda3
+    - $HOME/miniconda3_installer
   timeout: 1000 # this gives travis-CI sufficient time (up to ~16 minutes) to cache large conda directories
 before_install:
   - ./bin/setup.sh
