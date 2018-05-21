@@ -1,7 +1,13 @@
 import googleapiclient.discovery
+import argparse
 
+parser = argparse.ArgumentParser('get_predictions.py')
+parser.add_argument('--version', required=True)
+
+args = vars(parser.parse_args())
+
+VERSION_NAME = '{}'.format(args['version'])
 PROJECT_ID = 'ml-ci-cd-demo'
-VERSION_NAME = 'v4'
 MODEL_NAME = 'census_sklearn_pipeline'
 
 service = googleapiclient.discovery.build('ml', 'v1')
