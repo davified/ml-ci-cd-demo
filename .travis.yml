@@ -2,17 +2,16 @@ language: python
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
-script:
+before_install:
   - gcloud version || true
   - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
   - source /home/travis/google-cloud-sdk/path.bash.inc # Add gcloud to $PATH
-  - gcloud version
-# jobs:
-#   include:
-#     - stage: train model
-#       script: echo "initiate model training job"
-#     - stage: run statistical tests
-#       script: echo "initiate model statistical tests"
+jobs:
+  include:
+    - stage: train model
+      script: echo "initiate model training job"
+    - stage: run statistical tests
+      script: echo "initiate model statistical tests"
 #     - stage: deploy model to staging
 #       script: echo "initiate deploy-to-staging job"
 #     - stage: staging smoke test
