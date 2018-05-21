@@ -1,29 +1,24 @@
 language: generic
 env:
-  global:
-    - CI=true
-    - PATH=$HOME/google-cloud-sdk/bin:$HOME/anaconda3/bin:$PATH
+  - PATH=$HOME/google-cloud-sdk/bin:$HOME/anaconda3/bin:$PATH
 cache:
   directories:
     - $HOME/google-cloud-sdk
     - $HOME/anaconda3
     - $HOME/anaconda3_installer
-    - $HOME/anaconda3/envs/ml-ci-cd-demo
   timeout: 1000 # 1000 secs, or ~16 minutes
 before_install:
-  - echo 'listing conda dir'; ls $HOME/anaconda3/
-  - echo 'listing conda/envs dir'; ls $HOME/anaconda3/envs
-  - if [[ -f $HOME/anaconda3/bin/conda ]]; then echo "[INFO] OK Found conda!"; fi
   - ./setup.sh
 jobs:
   include: 
     - stage: train model
       script:
-      - echo "smoke test"
-      # - ./bin/get_data.sh
-      # - ./bin/train.sh scikit-model
-#       - echo "initiate model statistical tests"
-#       - echo "deploying model"
+      - ./bin/get_data.sh
+      - ./bin/train.sh scikit-model
+      - echo 'placeholder: running statistical tests on model'
+    - stage: deploy model
+      script:
+      - ./bin/deploy.sh scikit-model
 #     - stage: staging smoke test
 #       script: echo "running smoke test"
 #     - stage: deploy model to production
