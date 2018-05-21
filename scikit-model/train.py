@@ -124,6 +124,9 @@ pipeline = Pipeline([
 ])
 
 # Export the model to a file
-pickle.dump(pipeline, open('./build/model.pkl', 'wb'))
+build_directory='build'
+if not os.path.exists(build_directory):
+    os.makedirs(build_directory)
+pickle.dump(pipeline, open('./{}/model.pkl'.format(build_directory), 'wb'))
 
-print('Model trained and saved at {}/build'.format(os.getcwd()))
+print('Model trained and saved at {}/{}'.format(os.getcwd(), build_directory))
