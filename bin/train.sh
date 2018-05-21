@@ -10,6 +10,9 @@ fi
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
 
+echo "debugging: which source"
+which source
+
 echo "[INFO] Activating virtual environment"
 source activate ${virtual_environment_name}
 
