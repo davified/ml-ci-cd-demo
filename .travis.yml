@@ -9,9 +9,11 @@ before_install:
 jobs:
   include:
     - stage: train model
-      script: echo "initiate model training job"
-    - stage: run statistical tests
-      script: echo "initiate model statistical tests"
+      script: 
+      - ./bin/get_data.sh
+      - ./bin/train.sh
+# - stage: run statistical tests
+#   script: echo "initiate model statistical tests"
 #     - stage: deploy model to staging
 #       script: echo "initiate deploy-to-staging job"
 #     - stage: staging smoke test
