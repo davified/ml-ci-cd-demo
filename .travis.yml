@@ -5,7 +5,7 @@ cache:
   directories:
     - $HOME/google-cloud-sdk
     - $HOME/anaconda3
-    - $HOME/anaconda3_installer.sh
+    - $HOME/anaconda3_installer
     - $HOME/anaconda3/envs/ml-ci-cd-demo
 before_install:
   - echo $OSTYPE

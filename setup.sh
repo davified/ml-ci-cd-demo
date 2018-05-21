@@ -20,15 +20,15 @@ export PATH="$HOME/anaconda3/bin:$PATH"
 if [[ `which conda` ]]; then
   echo "[INFO] OK Found conda!"
 else
-  if [[ ! -f "$HOME/anaconda3_installer.sh"  ]]; then
+  if [[ ! -f "$HOME/anaconda3_installer/install.sh"  ]]; then
     echo "[INFO] Downloading anaconda installation script..."
     echo "[INFO] This is a 511MB file and will some time to complete..."
     echo "downloading 511mb file"
-    curl ${anaconda_download_url} -o "$HOME/anaconda3_installer.sh"
+    curl ${anaconda_download_url} -o "$HOME/anaconda3_installer/install.sh"
   fi
 
   echo "[INFO] Running anaconda installation script..."
-  bash "$HOME/anaconda3_installer.sh" -b -p "$HOME/anaconda3"
+  bash "$HOME/anaconda3_installer/install.sh" -b -p "$HOME/anaconda3"
 fi
 
 if [[ ! -d "$HOME/anaconda3/envs/${virtual_environment_name}" ]]; then
