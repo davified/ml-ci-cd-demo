@@ -7,7 +7,7 @@ if [[ $1 == '' ]]; then
   exit 1
 fi
 
-current_directory="$(dirname $(realpath $0))"
+current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
 
 echo "[INFO] Activating virtual environment"
