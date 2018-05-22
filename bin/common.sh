@@ -7,7 +7,7 @@ project_directory="${current_directory}/.."
 
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
-export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
+export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
 export REGION="us-central1" # set to the same region where we're running Cloud ML Engine jobs
 export PROJECT_ID="ml-ci-cd-demo"
 export BUCKET=${PROJECT_ID}-mlengine
@@ -31,5 +31,8 @@ exit_if_directory_not_specified_as_first_argument() {
 }
 
 
-echo "INFO: Setting project to ${PROJECT_ID}"
+echo "[INFO] Setting project to ${PROJECT_ID}"
 gcloud config set project $PROJECT_ID
+
+echo "[INFO] Activating service account"
+gcloud auth activate-service-account --key-file ${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json
