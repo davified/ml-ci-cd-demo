@@ -15,14 +15,18 @@ before_install:
 jobs:
   include:
   - stage: train and evaluate model
-    if: branch = deploy-to-prod
+    if: branch = deploy-to-staging
     script:
     - ./bin/get_data.sh
     - ./bin/train.sh scikit-model
     - ./bin/evaluate.sh scikit-model
     - ./bin/upload_artifact.sh scikit-model
   - stage: deploy candidate model
+    if: branch = deploy-to-staging
+    script:
+    - ./bin/deploy_to_staging.sh scikit-model
+    - echo 'smoke test for staging'
+  - stage: deploy model to prod
     if: branch = deploy-to-prod
     script:
-    - ./bin/deploy.sh scikit-model
-    - echo 'smoke test for staging'
+    - ./bin/deploy_to_prod.sh scikit-model

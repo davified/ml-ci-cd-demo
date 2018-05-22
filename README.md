@@ -20,8 +20,8 @@
 - `bin/smoke_test.sh`
 - `jupyter notebook` (start jupyter notebook for development)
 
-7. Commands that are meant to be run by CI (If you want to run these locally, prefix it with `CI=true` (e.g. CI=true bin/deploy.sh))
-- `bin/deploy.sh`
+7. Commands that are meant to be run by CI (If you want to run these locally, prefix it with `CI=true` (e.g. CI=true bin/deploy_to_staging.sh))
+- `bin/deploy_to_staging.sh`
 - `bin/upload_artifact.sh`
 
 
