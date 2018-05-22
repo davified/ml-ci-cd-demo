@@ -1,25 +1,28 @@
 # Machine Learning CI/CD Pipeline Demo
 
+### Resources
+- [Tasks board](https://github.com/davified/ml-ci-cd-demo/projects/1)
+- [CI](https://www.travis-ci.org/davified/ml-ci-cd-demo)
+- [GCP project dashboard](https://console.cloud.google.com/home/dashboard?project=ml-ci-cd-demo)
+
 ### Getting started
 
-1. Get into project directory: `cd ml-ci-cd`
-2. Build docker image: `docker build -t ml-ci-cd-demo .`
-3. Start docker image: `docker run -p 8888:8888 -ti -v $(pwd):/app ml-ci-cd-demo bash`
-4. Some manual configuration:
-- generate credentials for GCP project [here](https://console.cloud.google.com/apis/credentials?project=ml-ci-ci-demo) -> select 'Service Account Key' -> enter details, select JSON and download it, and move/rename it to `~/.ssh/gcp_ml_ci_cd_demo.json`,
-- Update `./infrastructure/shell/configure_api_key.sh` with the path to your 
-- To start `jupyter notebook`, run this inside the docker container: `jupyter notebook --ip 0.0.0.0 --no-browser`
+1. Get into project directory: `cd ml-ci-cd-demo`
+2. Setup dev environment: `bin/setup.sh`
+3. Some manual configuration:
+- generate credentials for GCP project [here](https://console.cloud.google.com/apis/credentials?project=ml-ci-ci-demo) -> select 'Service Account Key' -> enter details, select JSON and download it, and move/rename it to `./gcp_ml_ci_cd_demo.json`,
+4. To activate virtual environment: `source activate ml-ci-cd-demo`
+5. To deactivate virtual environment: `source deactivate`
+6. Commands that you can run locally
+- `bin/train.sh`
+- `bin/evaluate.sh`
+- `bin/predict.sh`
+- `bin/smoke_test.sh`
+- `jupyter notebook` (start jupyter notebook for development)
 
-### Infrastructure
-
-#### Shell 
-
-In `infrastructure/shell`, we keep a list of utility scripts. You need to `cd infrastructure/shell` before running the shell scripts
-
-- Dataproc
-  - To delete Dataproc cluster: `./delete_dataproc_cluster.sh <name of cluster>`
-  - To create Dataproc cluster: `./create_dataproc_cluster.sh <name of cluster>`
-  - To open Datalab notebook on the dataproc cluster: `./open_data_lab.sh`
+7. Commands that are meant to be run by CI (If you want to run these locally, prefix it with `CI=true` (e.g. CI=true bin/deploy.sh))
+- `bin/deploy.sh`
+- `bin/upload_artifact.sh`
 
 
 ### Notes/log of any manual steps
@@ -30,4 +33,4 @@ In `infrastructure/shell`, we keep a list of utility scripts. You need to `cd in
 
 #### Travis-CI
 - pros: easy to get started
-- cons: no file-whitelisting functionality. Even updating a README triggers the CI pipeline (i.e. the training of a new model)
+- cons: no file-whitelisting functionality. Even updating a README triggers the CI pipeline (i.e. the training of a new model). (Work around for this: **commit and push to `deploy-to-prod` branch to "manually" trigger train and deploy stages on CI**)
