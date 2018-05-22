@@ -2,14 +2,9 @@
 
 set -e
 
-# if [[ $CI != "true" ]]; then
-#     echo "[ERROR] This script should only be run on CI, and not on a local machine."
-#     echo "[ERROR] Exiting..."
-#     exit 1
-# fi
-
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
+exit_if_not_ci
 
 model_status_code=$(gcloud beta ml-engine models list | grep -c ${MODEL_NAME} || true) # 1 if model exists, 0 otherwise
 if [[ ${model_status_code} == 0 ]]; then
