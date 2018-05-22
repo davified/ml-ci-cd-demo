@@ -18,5 +18,14 @@ exit_if_not_ci() {
   fi
 }
 
+exit_if_directory_not_specified_as_first_argument() {
+  if [[ $1 == '' ]]; then
+    echo "[ERROR] Please specify directory (e.g. scikit-model or tf-estimator) as first argument to this shell script"
+    echo "[ERROR] Exiting..."
+    exit 1
+  fi
+}
+
+
 echo "INFO: Setting project to ${PROJECT_ID}"
 gcloud config set project $PROJECT_ID

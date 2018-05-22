@@ -2,14 +2,9 @@
 
 set -e
 
-if [[ $CI != "true" ]]; then
-    echo "[ERROR] This script should only be run on CI, and not on a local machine."
-    echo "[ERROR] Exiting..."
-    exit 1
-fi
-
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
+exit_if_not_ci
 
 if ! gsutil ls | grep -q gs://${BUCKET}/; then
   gsutil mb -l ${REGION} gs://${BUCKET}

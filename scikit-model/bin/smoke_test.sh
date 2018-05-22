@@ -12,7 +12,6 @@ version_name=$1
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 project_directory="${current_directory}/../.."
 source ${current_directory}/common.sh
-source ${project_directory}/bin/common.sh
 
 echo "[INFO] Activating virtual environment"
 source activate ${virtual_environment_name}
