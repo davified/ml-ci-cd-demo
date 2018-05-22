@@ -13,9 +13,6 @@ export PROJECT_ID="ml-ci-cd-demo"
 export BUCKET=${PROJECT_ID}-mlengine
 export MODEL_NAME="census_sklearn_pipeline"
 
-echo "DEBUGGING CI"
-echo "GCP credentials.json is here:"
-ls -la $GOOGLE_APPLICATION_CREDENTIALS
 
 exit_if_not_ci() {
   if [[ $CI != "true" ]]; then

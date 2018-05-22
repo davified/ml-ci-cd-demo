@@ -1,7 +1,7 @@
 language: generic
 env:
   global:
-  - PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH secure=AzzryIStTgd80/h3ug6unFU0KYpMljylvBvH1EkF+KNRvW7rqDUHFDEnfzt//gXiMw2mi9OtNmz9SdckhE53RMfWLLsS3mx469U6FyFvFcIA0soAiEjnqqnShMDMg+3tLXzwduClpnR7HHMTpiY3BruGacBbe/TuC7GaN+bcO1A9zsjm1y6CEH1VpGUM/iJuecTzYYw5HxtINWxkANYIlWxFcHnTYg/w0B/1R8vgRSvgbQaFIwHr952gvbuclNrzJX2+VVrMvENREXrKdngJvdnglI8H1Eo6wPMnRijRZZakzFB5WEy6h/0P24R1yFSug4jRZll9LBCbruNeSnvd2Ysr32wOxG98Pu4Otw+IU0YbdvWOd+KBLt6iPfBcym8hjg4ws67cZeXXnB/NMoxdLikt1amGeu9/OLDjIpaMDsBOfsu3MbojbiKrnJxZxoFqpldK7wqRlBog0OskfXGYwRRF94xktTOGSRhxOze0kj0CzMGQiK2rKK0ibCzScHCFMTXnHvGuVqNP6uBDkgnoAtgJ8HRYfPeQBJ55q9YjZ1o5dzRlCMmrq6CexiMG7mcZTRZGOZ9ZRD8jl1YtULVds2sEtCbJSyCGaR2OWQXTnmDE/X8ZvWUSgT3U3+aI/3go2U0eyX7lL14TKL8aETL60Y5ucrfuYc8VZE1MeBdappw=
+  - PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 cache:
   directories:
   - "$HOME/google-cloud-sdk"
@@ -16,11 +16,10 @@ jobs:
   include:
   - stage: train model
     script:
-    - ls -la
-    # - ./bin/get_data.sh
-    # - ./bin/train.sh scikit-model
-    # - ./bin/evaluate.sh scikit-model
-    # - ./bin/upload_artifact.sh scikit-model
+    - ./bin/get_data.sh
+    - ./bin/train.sh scikit-model
+    - ./bin/evaluate.sh scikit-model
+    - ./bin/upload_artifact.sh scikit-model
   - stage: deploy candidate model
     script:
     - ./bin/deploy.sh scikit-model
