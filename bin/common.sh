@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
 
 set -e
+
+current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
+project_directory="${current_directory}/.."
+
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
-export GOOGLE_APPLICATION_CREDENTIALS="./gcp_ml_ci_cd_demo.json"
+export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
 export REGION="us-central1" # set to the same region where we're running Cloud ML Engine jobs
 export PROJECT_ID="ml-ci-cd-demo"
 export BUCKET=${PROJECT_ID}-mlengine
 export MODEL_NAME="census_sklearn_pipeline"
 
+echo "DEBUGGING CI"
+echo "GCP credentials.json is here:"
+ls -la $GOOGLE_APPLICATION_CREDENTIALS
 
 exit_if_not_ci() {
   if [[ $CI != "true" ]]; then

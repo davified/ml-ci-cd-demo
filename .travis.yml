@@ -16,11 +16,12 @@ jobs:
   include:
   - stage: train model
     script:
-    - "./bin/get_data.sh"
-    - "./bin/train.sh scikit-model"
-    - "./bin/evaluate.sh scikit-model"
-    - "./bin/upload_artifact.sh scikit-model"
+    - ls -la
+    # - ./bin/get_data.sh
+    # - ./bin/train.sh scikit-model
+    # - ./bin/evaluate.sh scikit-model
+    # - ./bin/upload_artifact.sh scikit-model
   - stage: deploy candidate model
     script:
-    - "./bin/deploy.sh scikit-model"
+    - ./bin/deploy.sh scikit-model
     - echo 'smoke test for staging'
