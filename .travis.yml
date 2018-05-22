@@ -16,9 +16,9 @@ jobs:
   include:
   - stage: train model
     script:
-    # - ./bin/get_data.sh
-    # - ./bin/train.sh scikit-model
-    # - ./bin/evaluate.sh scikit-model
+    - ./bin/get_data.sh
+    - ./bin/train.sh scikit-model
+    - ./bin/evaluate.sh scikit-model
     - ./bin/upload_artifact.sh scikit-model
   - stage: deploy candidate model
     script:
