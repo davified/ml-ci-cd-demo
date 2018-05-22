@@ -1,7 +1,7 @@
 language: generic
 env:
   global:
-  - PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
+  - PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH CLOUDSDK_CORE_DISABLE_PROMPTS=1
 cache:
   directories:
   - "$HOME/google-cloud-sdk"
@@ -14,13 +14,15 @@ before_install:
 - ./bin/setup.sh
 jobs:
   include:
-  - stage: train model
+  - stage: train and evaluate model
+    if: branch = deploy-to-prod
     script:
     - ./bin/get_data.sh
     - ./bin/train.sh scikit-model
     - ./bin/evaluate.sh scikit-model
     - ./bin/upload_artifact.sh scikit-model
   - stage: deploy candidate model
+    if: branch = deploy-to-prod
     script:
     - ./bin/deploy.sh scikit-model
     - echo 'smoke test for staging'
