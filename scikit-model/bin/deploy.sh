@@ -17,8 +17,12 @@ DEPLOYMENT_SOURCE="gs://$BUCKET"
 FRAMEWORK="SCIKIT_LEARN"
 
 echo "[INFO] Getting latest version number for ${MODEL_NAME} model"
-latest_version=$(gcloud beta ml-engine versions list --model=census_sklearn_pipeline | awk '{w=$1} END{print w}')
-latest_version_number=$(echo ${latest_version} | cut -d "v" -f 2)
+latest_version_number=$(gcloud beta ml-engine versions list --model=${MODEL_NAME} |
+tail -n+2           |
+grep -Eo '^[^ ]+'   |
+cut -d "v" -f 2     |
+sort -n             |
+tail -n 1)
 latest_version_plus_one="v$((${latest_version_number} + 1))"
 echo "[INFO] Latest version is v${latest_version_number} and next version to be deployed will be ${latest_version_plus_one}"
 
