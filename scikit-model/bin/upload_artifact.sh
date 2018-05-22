@@ -8,6 +8,8 @@ exit_if_not_ci
 
 echo "GCP credentials are here:"
 GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
+gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
+
 ls -la $GOOGLE_APPLICATION_CREDENTIALS
 
 if ! gsutil ls | grep -q gs://${BUCKET}/; then
