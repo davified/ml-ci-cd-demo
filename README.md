@@ -10,7 +10,7 @@
 1. Get into project directory: `cd ml-ci-cd-demo`
 2. Setup dev environment: `bin/setup.sh`
 3. Some manual configuration:
-- generate credentials for GCP project [here](https://console.cloud.google.com/apis/credentials?project=ml-ci-ci-demo) -> select 'Service Account Key' -> enter details, select JSON and download it, and move/rename it to `./gcp_ml_ci_cd_demo.json`,
+- generate credentials for GCP project [here](https://console.cloud.google.com/apis/credentials?project=ml-ci-ci-demo) -> select 'Service Account Key' -> enter details, select JSON and download it, and move/rename it to `./gcp_ml_ci_cd_demo.json` (i.e. `ml-ci-cd-demo/gcp_ml_ci_cd_demo.json`)
 4. To activate virtual environment: `source activate ml-ci-cd-demo`
 5. To deactivate virtual environment: `source deactivate`
 6. Commands that you can run locally
