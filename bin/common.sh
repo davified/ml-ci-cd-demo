@@ -7,7 +7,12 @@ project_directory="${current_directory}/.."
 
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
-export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
+if [[ $CI == 'true' ]]; then
+  export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
+else
+  export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
+fi
+
 export REGION="us-central1" # set to the same region where we're running Cloud ML Engine jobs
 export PROJECT_ID="ml-ci-cd-demo"
 export BUCKET=${PROJECT_ID}-mlengine
