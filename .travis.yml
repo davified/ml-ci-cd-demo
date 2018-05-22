@@ -29,4 +29,4 @@ jobs:
   - stage: deploy model to prod
     if: branch = deploy-to-prod
     script:
-    - ./bin/deploy_to_prod.sh scikit-model
+    - ./bin/deploy_to_prod.sh scikit-model $(cat ./bin/MODEL_PROD_VERSION.txt)

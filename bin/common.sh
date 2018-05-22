@@ -40,4 +40,4 @@ echo "[INFO] Setting project to ${PROJECT_ID}"
 gcloud config set project $PROJECT_ID
 
 echo "[INFO] Activating service account"
-gcloud auth activate-service-account --key-file ${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json
+gcloud auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
