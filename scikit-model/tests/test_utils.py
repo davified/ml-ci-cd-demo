@@ -14,7 +14,7 @@ class TestUtils(unittest.TestCase):
     self.NO_OF_FEATURES = self.test_df.shape[1] - 1
 
   def test_should_load_data_and_return_features_labels(self):
-    features, labels = load_data(data_filepath=self.test_data, y_column='income-level')
+    features, labels = load_data(data_filepath=self.test_data, y_column='income-level', y_class_1=' >50K')
 
     self.assertEqual(np.array(features).shape, (self.NO_OF_EXAMPLES, self.NO_OF_FEATURES))
     self.assertEqual(np.array(labels).shape, (self.NO_OF_EXAMPLES,))
