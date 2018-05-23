@@ -16,7 +16,7 @@ jobs:
   include:
   - stage: unit tests
     script:
-    - ./bin/run_unit_tests.sh
+    - ./bin/run_unit_tests.sh scikit-model
   - stage: train and evaluate model
     if: branch = deploy-to-staging
     script:
