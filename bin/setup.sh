@@ -40,7 +40,9 @@ else
   conda env update
 fi
 
-python -m ipykernel install --user --name ${virtual_environment_name} --display-name "${virtual_environment_name}"
+if [[ $CI != 'true' ]]; then
+  python -m ipykernel install --user --name ${virtual_environment_name} --display-name "${virtual_environment_name}"
+fi
 
 echo "[INFO] Done!"
 echo "[INFO] To activate the virtual environment, run: source activate ${virtual_environment_name}"

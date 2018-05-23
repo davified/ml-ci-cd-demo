@@ -2,4 +2,5 @@
 
 set -e
 
+echo "[INFO] Training model..."
 python train.py

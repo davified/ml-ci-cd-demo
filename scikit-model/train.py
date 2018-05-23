@@ -12,8 +12,8 @@ from constants import COLUMNS, CATEGORICAL_COLUMNS
 from utils import load_data
 
 
-train_features, train_labels = load_data(data_filepath='../data/adult.data', y_column='income-level')
-test_features, test_labels   = load_data(data_filepath='../data/adult.test', y_column='income-level')
+train_features, train_labels = load_data(data_filepath='../data/adult.data', y_column='income-level', y_class_1=' >50K')
+test_features, test_labels   = load_data(data_filepath='../data/adult.test', y_column='income-level', y_class_1=' >50K.')
 
 
 # Convert categorical features to numerical values using a list of pipelines

@@ -12,7 +12,7 @@ curl https://archive.ics.uci.edu/ml/machine-learning-databases/adult/adult.test 
 # remove the unnecessary first line from test data 
 sed -i -e "1d" ./data/adult.test
 # remove the unnecessary period (.) at the end of each line
-sed -i "s/.$//" ./data/adult.test
+# sed -i "s/.$//" ./data/adult.test
 
 echo "[INFO] Generating fixtures for unit tests from training/testing data"
 head -n 10 ./data/adult.data > ./scikit-model/tests/fixtures/samples.csv
