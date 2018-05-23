@@ -7,6 +7,10 @@ project_directory="${current_directory}/.."
 
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
+echo "[INFO] Activating virtual environment"
+source deactivate
+source activate ${virtual_environment_name}
+
 if [[ $CI == 'true' ]]; then
   export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
 else
