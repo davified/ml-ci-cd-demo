@@ -1,7 +1,6 @@
 import json
 import numpy as np
 import os
-import pandas as pd
 import pickle
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.externals import joblib
@@ -9,64 +8,16 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.pipeline import FeatureUnion
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelBinarizer
-
-# Define the format of your input data including unused columns (These are the columns from the census data files)
-COLUMNS = (
-    'age',
-    'workclass',
-    'fnlwgt',
-    'education',
-    'education-num',
-    'marital-status',
-    'occupation',
-    'relationship',
-    'race',
-    'sex',
-    'capital-gain',
-    'capital-loss',
-    'hours-per-week',
-    'native-country',
-    'income-level'
-)
-
-# Categorical columns are columns that need to be turned into a numerical value to be used by scikit-learn
-CATEGORICAL_COLUMNS = (
-    'workclass',
-    'education',
-    'marital-status',
-    'occupation',
-    'relationship',
-    'race',
-    'sex',
-    'native-country'
-)
+from constants import COLUMNS, CATEGORICAL_COLUMNS
+from utils import load_data
 
 
-# Load the training census dataset
-with open('./data/adult.data', 'r') as train_data:
-    raw_training_data = pd.read_csv(train_data, header=None, names=COLUMNS)
-
-# Remove the column we are trying to predict ('income-level') from our features list
-# Convert the Dataframe to a lists of lists
-train_features = raw_training_data.drop('income-level', axis=1).as_matrix().tolist()
-# Create our training labels list, convert the Dataframe to a lists of lists
-train_labels = (raw_training_data['income-level'] == ' >50K').as_matrix().tolist()
+train_features, train_labels = load_data(data_filepath='../data/adult.data', y_column='income-level')
+test_features, test_labels   = load_data(data_filepath='../data/adult.test', y_column='income-level')
 
 
-# Load the test census dataset
-with open('./data/adult.test', 'r') as test_data:
-    raw_testing_data = pd.read_csv(test_data, names=COLUMNS, skiprows=1)
-# Remove the column we are trying to predict ('income-level') from our features list
-# Convert the Dataframe to a lists of lists
-test_features = raw_testing_data.drop('income-level', axis=1).as_matrix().tolist()
-# Create our training labels list, convert the Dataframe to a lists of lists
-test_labels = (raw_testing_data['income-level'] == ' >50K.').as_matrix().tolist()
-
-
-# Since the census data set has categorical features, we need to convert
-# them to numerical values. We'll use a list of pipelines to convert each
-# categorical column and then use FeatureUnion to combine them before calling
-# the RandomForestClassifier.
+# Convert categorical features to numerical values using a list of pipelines
+# We'll use FeatureUnion to combine them before calling the RandomForestClassifier.
 categorical_pipelines = []
 
 # Each categorical column needs to be extracted individually and converted to a numerical value.

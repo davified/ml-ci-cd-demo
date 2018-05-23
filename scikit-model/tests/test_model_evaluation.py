@@ -2,24 +2,7 @@ import unittest, pickle
 import pandas as pd
 from sklearn import metrics
 
-# TODO: davidtan [2018-05-21] extract COLUMNS to constants file
-COLUMNS = (
-    'age',
-    'workclass',
-    'fnlwgt',
-    'education',
-    'education-num',
-    'marital-status',
-    'occupation',
-    'relationship',
-    'race',
-    'sex',
-    'capital-gain',
-    'capital-loss',
-    'hours-per-week',
-    'native-country',
-    'income-level'
-)
+from constants import COLUMNS
 
 RECALL_THRESHOLD = 0.1
 PRECISION_THRESHOLD = 0.1
