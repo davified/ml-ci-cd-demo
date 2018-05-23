@@ -28,3 +28,6 @@ class TestModelEvaluation(unittest.TestCase):
     precision = metrics.precision_score(self.test_labels, y_predicted.round())
 
     self.assertTrue(precision > PRECISION_THRESHOLD, "precision of {} is below threshold of {}".format(precision, PRECISION_THRESHOLD))
+
+  test_should_have_recall_score_above_minimum_threshold.statistical_test = True
+  test_should_have_precision_score_above_minimum_threshold.statistical_test = True
