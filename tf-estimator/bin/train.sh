@@ -22,6 +22,7 @@ gcloud ml-engine jobs submit training ${JOB_NAME} \
     --package-path trainer/ \
     --region ${REGION} \
     --scale-tier STANDARD_1 \
+    --stream-logs
     -- \
     --train-files ${TRAIN_DATA} \
     --eval-files ${EVAL_DATA} \
