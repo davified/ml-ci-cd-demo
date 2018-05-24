@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-project_directory="${current_directory}/../.."
+project_directory="$(echo $current_directory | sed 's/\/ml-ci-cd-demo.*/\/ml-ci-cd-demo/g')"
 
 MODEL_NAME="census_model" # to be replaced with MODEL_NAME in common.sh
 JOB_NAME="$MODEL_NAME$(date '+%d_%m_%Y_%H_%M_%S')"

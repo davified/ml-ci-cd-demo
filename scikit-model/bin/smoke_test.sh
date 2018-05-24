@@ -10,7 +10,7 @@ fi
 version_name=$1
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-project_directory="${current_directory}/../.."
+project_directory="$(echo $current_directory | sed 's/\/ml-ci-cd-demo.*/\/ml-ci-cd-demo/g')"
 source ${current_directory}/common.sh
 
 echo "[INFO] Activating virtual environment"
