@@ -24,7 +24,7 @@ jobs:
     - ./bin/train.sh scikit-model
     - ./bin/evaluate.sh scikit-model
     - ./bin/upload_artifact.sh scikit-model
-  - stage: deploy candidate model
+  - stage: deploy candidate model to staging
     if: branch = deploy-to-staging
     script:
     - ./bin/deploy_to_staging.sh scikit-model
