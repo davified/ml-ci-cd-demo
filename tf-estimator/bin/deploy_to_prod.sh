@@ -4,7 +4,7 @@ set -e
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
-# exit_if_not_ci
+exit_if_not_ci
 
 VERSION_TO_DEPLOY_TO_PROD=$1
 
@@ -18,4 +18,5 @@ gcloud ml-engine versions set-default ${VERSION_TO_DEPLOY_TO_PROD} --model=${MOD
 echo "[INFO] Listing model(s) and default version name(s)"
 gcloud ml-engine models list
 
+echo "[INFO] Running smoke test against latest deployed version"
 ${current_directory}/smoke_test.sh ${VERSION_TO_DEPLOY_TO_PROD}

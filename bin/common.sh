@@ -48,6 +48,11 @@ get_latest_model_version_for() {
   tail -n 1)
 }
 
+get_current_default_version_for() {
+  MODEL_NAME=$1
+  echo "v$(gcloud ml-engine models list | grep ${MODEL_NAME} | cut -d "v" -f 2)"
+}
+
 get_next_version_name_for() {
   MODEL_NAME=$1
   # Getting latest version number for ${MODEL_NAME} model

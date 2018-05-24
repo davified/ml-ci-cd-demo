@@ -32,4 +32,4 @@ jobs:
   - stage: deploy model to prod
     if: branch = deploy-to-prod
     script:
-    - ./bin/deploy_to_prod.sh ${MODEL_DIR} $(cat ./bin/MODEL_PROD_VERSION.txt)
+    - ./bin/deploy_to_prod.sh ${MODEL_DIR} $(cat ${MODEL_DIR}/bin/MODEL_PROD_VERSION.txt)
