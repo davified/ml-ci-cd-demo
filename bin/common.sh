@@ -1,26 +1,28 @@
 #!/usr/bin/env bash
 
 set -e
-
-current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-project_directory="${current_directory}/.."
+echo "top of common.sh"
+# current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
+# project_directory="${current_directory}/.."
+project_directory=$(pwd)
 
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
-echo "[INFO] Activating virtual environment"
-source deactivate
-source activate ${virtual_environment_name}
-
-if [[ $CI == 'true' ]]; then
-  export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
-else
-  export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
-fi
-
 export REGION="us-central1" # set to the same region where we're running Cloud ML Engine jobs
 export PROJECT_ID="ml-ci-cd-demo"
 export BUCKET=${PROJECT_ID}-mlengine
 export MODEL_NAME="census_sklearn_pipeline"
+
+if [[ $CI == 'true' ]]; then
+  export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
+else
+  ls ${project_directory}/gcp_ml_ci_cd_demo.json
+  export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
+fi
+
+echo "[INFO] Activating virtual environment"
+source deactivate
+source activate ${virtual_environment_name}
 
 
 exit_if_not_ci() {

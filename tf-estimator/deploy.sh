@@ -13,7 +13,7 @@ fi
 
 gcloud ml-engine models create ${MODEL_NAME} --regions=${REGION}
 
-# OUTPUT_PATH="${BUCKET_NAME}/${JOB_NAME}"
+# OUTPUT_PATH="${BUCKET}/${JOB_NAME}"
 # gsutil ls -r "${OUTPUT_PATH}/export"
 
 gcloud ml-engine versions create v1 \
