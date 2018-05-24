@@ -1,7 +1,7 @@
 language: generic
 env:
   global:
-  - PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - MODEL_DIR=scikit-model PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH CLOUDSDK_CORE_DISABLE_PROMPTS=1
 cache:
   directories:
   - "$HOME/google-cloud-sdk"
@@ -16,20 +16,20 @@ jobs:
   include:
   - stage: unit tests
     script:
-    - ./bin/run_unit_tests.sh scikit-model
+    - ./bin/run_unit_tests.sh ${MODEL_DIR}
   - stage: train and evaluate model
     if: branch = deploy-to-staging
     script:
     - ./bin/get_data.sh
-    - ./bin/train.sh scikit-model
-    - ./bin/evaluate.sh scikit-model
-    - ./bin/upload_artifact.sh scikit-model
+    - ./bin/train.sh ${MODEL_DIR}
+    - ./bin/evaluate.sh ${MODEL_DIR}
+    - ./bin/upload_artifact.sh ${MODEL_DIR}
   - stage: deploy candidate model to staging
     if: branch = deploy-to-staging
     script:
-    - ./bin/deploy_to_staging.sh scikit-model
+    - ./bin/deploy_to_staging.sh ${MODEL_DIR}
     - echo 'smoke test for staging'
   - stage: deploy model to prod
     if: branch = deploy-to-prod
     script:
-    - ./bin/deploy_to_prod.sh scikit-model $(cat ./bin/MODEL_PROD_VERSION.txt)
+    - ./bin/deploy_to_prod.sh ${MODEL_DIR} $(cat ./bin/MODEL_PROD_VERSION.txt)
