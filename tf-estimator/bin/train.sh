@@ -7,13 +7,13 @@ MODEL_NAME="census_model" # to be replaced with MODEL_NAME in common.sh
 JOB_NAME="$MODEL_NAME$(date '+%d_%m_%Y_%H_%M_%S')"
 
 # for training locally
-TRAIN_DATA="${project_directory}/data/adult.data"
-EVAL_DATA="${project_directory}/data/adult.test"
+# TRAIN_DATA="${current_directory}/../data/adult.data.csv"
+# EVAL_DATA="${current_directory}/../data/adult.test.csv"
 
 # for training on cloud ml engine
-# TRAIN_DATA="${BUCKET}/data/adult.data.csv"
-# EVAL_DATA="${BUCKET}/data/adult.test.csv"
-OUTPUT_PATH="${BUCKET}/${JOB_NAME}"
+TRAIN_DATA="${BUCKET}/data/adult.data.csv"
+EVAL_DATA="${BUCKET}/data/adult.test.csv"
+OUTPUT_PATH="${BUCKET}/tf-estimator-output/${JOB_NAME}"
 
 gcloud ml-engine jobs submit training ${JOB_NAME} \
     --job-dir ${OUTPUT_PATH} \
