@@ -1,6 +1,9 @@
-# export GOOGLE_APPLICATION_CREDENTIALS="~/.ssh/tensorflow-serving-40618fd23e48.json"
-# export BUCKET="gs://tensorflow-serving-200405-2"
-# export PROJECT_ID="tensorflow-serving-200405"
-# export REGION="us-central1"
-# export MODEL_NAME="census_dist_1_$(date '+%d_%m_%Y_%H_%M_%S')"
-# export JOB_NAME="${MODEL_NAME}"
+#!/usr/bin/env bash
+
+set -e
+
+current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
+project_directory="${current_directory}/../.."
+source ${project_directory}/bin/common.sh
+
+MODEL_NAME='census_tensorflow'

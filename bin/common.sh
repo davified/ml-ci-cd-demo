@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
 set -e
-echo "top of common.sh"
-# current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-# project_directory="${current_directory}/.."
-project_directory=$(pwd)
+
+current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
+project_directory="${current_directory}/../.."
 
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
@@ -16,7 +15,6 @@ export MODEL_NAME="census_sklearn_pipeline"
 if [[ $CI == 'true' ]]; then
   export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
 else
-  ls ${project_directory}/gcp_ml_ci_cd_demo.json
   export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
 fi
 
@@ -39,6 +37,25 @@ exit_if_directory_not_specified_as_first_argument() {
     echo "[ERROR] Exiting..."
     exit 1
   fi
+}
+
+get_latest_model_version_for() {
+  echo $(gcloud ml-engine versions list --model=$1 |
+  tail -n+2           |
+  grep -Eo '^[^ ]+'   |
+  cut -d "v" -f 2     |
+  sort -n             |
+  tail -n 1)
+}
+
+get_next_version_name_for() {
+  MODEL_NAME=$1
+  # Getting latest version number for ${MODEL_NAME} model
+  latest_version_number=$(get_latest_model_version_for ${MODEL_NAME})
+  latest_version_plus_one="v$((${latest_version_number} + 1))"
+
+  # Next version to be deployed will be ${latest_version_plus_one}"
+  echo ${latest_version_plus_one}
 }
 
 

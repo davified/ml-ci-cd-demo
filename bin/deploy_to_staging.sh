@@ -3,8 +3,12 @@
 set -e
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-source ${current_directory}/common.sh
-exit_if_directory_not_specified_as_first_argument $1
+# source ${current_directory}/common.sh
+if [[ $1 == '' ]]; then
+  echo "[ERROR] Please specify directory (e.g. scikit-model or tf-estimator) as first argument to this shell script"
+  echo "[ERROR] Exiting..."
+  exit 1
+fi
 
 cd $1
 ./bin/deploy_to_staging.sh

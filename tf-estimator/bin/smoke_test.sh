@@ -2,15 +2,15 @@
 
 set -e
 
-source ./common.sh
+source ./bin/common.sh
 
 # HTTP curl request
 # how to get bearer token: https://cloud.google.com/blog/big-data/2017/09/performing-prediction-with-tensorflow-object-detection-models-on-google-cloud-machine-learning-engine
 
-SPECIFIC_MODEL_NAME="census_dist_1_11_04_2018_08_02_05"
+MODEL_NAME="census_model"
 
 curl --request POST \
-  --url "https://ml.googleapis.com/v1/projects/${PROJECT_ID}/models/${SPECIFIC_MODEL_NAME}/versions/v1:predict" \
+  --url "https://ml.googleapis.com/v1/projects/${PROJECT_ID}/models/${MODEL_NAME}/versions/v1:predict" \
   --header "authorization: Bearer $(gcloud auth print-access-token)" \
   --header 'content-type: application/json' \
   --data '{
