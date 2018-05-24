@@ -10,7 +10,7 @@ export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
 export REGION="us-central1" # set to the same region where we're running Cloud ML Engine jobs
 export PROJECT_ID="ml-ci-cd-demo"
-export BUCKET=${PROJECT_ID}-mlengine
+export BUCKET="gs://${PROJECT_ID}-mlengine"
 export MODEL_NAME="census_sklearn_pipeline"
 
 if [[ $CI == 'true' ]]; then

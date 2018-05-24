@@ -13,7 +13,7 @@ if [[ ${model_status_code} == 0 ]]; then
 fi
 
 echo "[INFO] Deploying model to GCP ML Engine"
-DEPLOYMENT_SOURCE="gs://$BUCKET"
+DEPLOYMENT_SOURCE="${BUCKET}"
 FRAMEWORK="SCIKIT_LEARN"
 
 echo "[INFO] Getting latest version number for ${MODEL_NAME} model"

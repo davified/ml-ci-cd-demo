@@ -3,6 +3,7 @@
 set -e
 
 source ./common.sh
+# TODO: Determine the value of MODEL_BINARIES dynamically
 MODEL_BINARIES=gs://tensorflow-serving-200405-2/census_dist_1_11_04_2018_07_41_22/export/census/1523404051
 if [[ $MODEL_BINARIES == "" ]]; then
   echo "ERROR: get dynamic MODEL_BINARIES path from gcloud bucket before running this script"

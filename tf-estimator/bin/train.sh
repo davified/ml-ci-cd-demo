@@ -11,9 +11,9 @@ TRAIN_DATA="${project_directory}/data/adult.data"
 EVAL_DATA="${project_directory}/data/adult.test"
 
 # for training on cloud ml engine
-# TRAIN_DATA="gs://${BUCKET}/data/adult.data.csv"
-# EVAL_DATA="gs://${BUCKET}/data/adult.test.csv"
-OUTPUT_PATH="gs://$BUCKET/$JOB_NAME"
+# TRAIN_DATA="${BUCKET}/data/adult.data.csv"
+# EVAL_DATA="${BUCKET}/data/adult.test.csv"
+OUTPUT_PATH="${BUCKET}/${JOB_NAME}"
 
 gcloud ml-engine jobs submit training ${JOB_NAME} \
     --job-dir ${OUTPUT_PATH} \
