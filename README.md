@@ -14,7 +14,7 @@
 4. To activate virtual environment: `source activate ml-ci-cd-demo`
 5. To deactivate virtual environment: `source deactivate`
 6. Commands that you can run locally
-- `bin/train.sh`
+- `bin/train_locally.sh`
 - `bin/evaluate.sh`
 - `bin/predict.sh`
 - `bin/smoke_test.sh`
