@@ -3,7 +3,7 @@
 set -e
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-project_directory="${current_directory}/../.."
+project_directory="$(echo $current_directory | sed 's/\/bin//g')"
 
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
