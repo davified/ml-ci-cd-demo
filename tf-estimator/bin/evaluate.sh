@@ -7,7 +7,7 @@ echo "current_directory: ${current_directory}"
 echo "contents of current_directory:"
 ls ${current_directory}
 
-output_dir="${output_dir}/../output"
+output_dir="${current_directory}/../output"
 echo "output_dir: ${output_dir}"
 echo "contents of output_dir:"
 ls ${output_dir}
