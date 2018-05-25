@@ -15,7 +15,9 @@ EVAL_DATA="${BUCKET}/data/adult.test.csv"
 OUTPUT_PATH="${BUCKET}/tf-estimator-output/${JOB_NAME}"
 
 mkdir -p ${project_directory}/tf-estimator/build/
-echo ${OUTPUT_PATH} > ${project_directory}/tf-estimator/build/model_output_path.txt
+
+echo ${OUTPUT_PATH} > ${project_directory}/tf-estimator/build/last_trained_model_output_path.txt
+gsutil cp ${project_directory}/tf-estimator/build/last_trained_model_output_path.txt $BUCKET/
 
 gcloud ml-engine jobs submit training ${JOB_NAME} \
     --job-dir ${OUTPUT_PATH} \

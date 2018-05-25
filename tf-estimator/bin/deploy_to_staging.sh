@@ -5,7 +5,9 @@ set -e
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
 
-OUTPUT_PATH=$(cat ./build/model_output_path.txt) # why is . == tf-estimator?
+gsutil cp $BUCKET/last_trained_model_output_path.txt .
+
+OUTPUT_PATH=$(cat ./last_trained_model_output_path.txt) # why is . == tf-estimator?
 
 echo "[INFO] Finding MODEL_BINARIES path on GCS bucket"
 echo "[INFO] Found OUTPUT_PATH=${OUTPUT_PATH}"
