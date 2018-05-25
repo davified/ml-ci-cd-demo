@@ -12,7 +12,12 @@ OUTPUT_PATH='gs://ml-ci-cd-demo-mlengine/tf-estimator-output/census_model2018_05
 
 echo "[INFO] Finding MODEL_BINARIES path on GCS bucket"
 echo "[INFO] Found OUTPUT_PATH=${OUTPUT_PATH}"
-MODEL_BINARIES=$(gsutil ls ${OUTPUT_PATH}/export/census | grep -E "${OUTPUT_PATH}/export/census/\d+/$") || true # prevent grep from breaking build if nothing is found
+if [[ $CI == 'true' ]]; then
+  MODEL_BINARIES=$(gsutil ls ${OUTPUT_PATH}/export/census | grep -P "${OUTPUT_PATH}/export/census/\d+/$") || true # prevent grep from breaking build if nothing is found
+else
+  MODEL_BINARIES=$(gsutil ls ${OUTPUT_PATH}/export/census | grep -E "${OUTPUT_PATH}/export/census/\d+/$") || true # prevent grep from breaking build if nothing is found
+fi
+
 echo "[INFO] MODEL_BINARIES=${MODEL_BINARIES}"
 
 model_status_code=$(gcloud ml-engine models list | grep -c ${MODEL_NAME} || true) # 1 if model exists, 0 otherwise
