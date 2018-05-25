@@ -5,12 +5,17 @@ set -e
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
 
-OUTPUT_PATH=$(cat ./build/model_output_path.txt) # why is . == tf-estimator?
+gsutil cp $BUCKET/last_trained_model_output_path.txt .
+OUTPUT_PATH=$(cat ./last_trained_model_output_path.txt)
 
 echo "[INFO] Finding MODEL_BINARIES path on GCS bucket"
 echo "[INFO] Found OUTPUT_PATH=${OUTPUT_PATH}"
-MODEL_BINARIES=$(gsutil ls ${OUTPUT_PATH}/export/census | grep -E "${OUTPUT_PATH}/export/census/\d+/$")
-echo "[INFO] Found MODEL_BINARIES=${MODEL_BINARIES}"
+if [[ $CI == 'true' ]]; then
+  MODEL_BINARIES=$(gsutil ls ${OUTPUT_PATH}/export/census | grep -P "${OUTPUT_PATH}/export/census/\d+/$") || true # prevent grep from breaking build if nothing is found
+else
+  MODEL_BINARIES=$(gsutil ls ${OUTPUT_PATH}/export/census | grep -E "${OUTPUT_PATH}/export/census/\d+/$") || true # prevent grep from breaking build if nothing is found
+fi
+echo "[INFO] MODEL_BINARIES=${MODEL_BINARIES}"
 
 model_status_code=$(gcloud ml-engine models list | grep -c ${MODEL_NAME} || true) # 1 if model exists, 0 otherwise
 if [[ ${model_status_code} == 0 ]]; then
