@@ -18,6 +18,9 @@ cd ${tf_estimator_dir}
 source deactivate
 source activate ml-ci-cd-demo
 
+echo "checking to see if virtual environment is activated"
+which python
+
 echo "[INFO] Training tensorflow model locally"
 gcloud ml-engine local train  --package-path trainer \
                               --module-name trainer.task \
