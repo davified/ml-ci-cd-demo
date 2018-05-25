@@ -2,6 +2,8 @@
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 project_directory="$(echo $current_directory | sed 's/\/ml-ci-cd-demo.*/\/ml-ci-cd-demo/g')"
+output_dir="${project_directory}/tf-estimator/output"
+mkdir -p $output_dir
 
 MODEL_NAME="census_model" # to be replaced with MODEL_NAME in common.sh
 JOB_NAME="$MODEL_NAME$(date '+%Y_%m_%d_%H_%M_%S')"
@@ -24,4 +26,5 @@ gcloud ml-engine jobs submit training ${JOB_NAME} \
     --eval-files ${EVAL_DATA} \
     --train-steps 1000 \
     --verbosity DEBUG  \
-    --eval-steps 100
+    --eval-steps 100 \
+    2>&1 |tee $output_dir/log.txt # write output to a log file + display on stdout and stderr
