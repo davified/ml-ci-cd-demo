@@ -7,7 +7,8 @@ source ${current_directory}/common.sh
 
 gsutil cp $BUCKET/last_trained_model_output_path.txt .
 
-OUTPUT_PATH=$(cat ./last_trained_model_output_path.txt) # why is . == tf-estimator?
+# OUTPUT_PATH=$(cat ./last_trained_model_output_path.txt) # why is . == tf-estimator?
+OUTPUT_PATH='gs://ml-ci-cd-demo-mlengine/tf-estimator-output/census_model2018_05_25_09_17_13'
 
 echo "[INFO] Finding MODEL_BINARIES path on GCS bucket"
 echo "[INFO] Found OUTPUT_PATH=${OUTPUT_PATH}"
