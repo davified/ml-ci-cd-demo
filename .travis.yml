@@ -28,7 +28,6 @@ jobs:
     if: branch = deploy-to-staging
     script:
     - ./bin/deploy_to_staging.sh ${MODEL_DIR}
-    - echo 'smoke test for staging'
   - stage: deploy model to prod
     if: branch = deploy-to-prod
     script:
