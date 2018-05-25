@@ -1,0 +1,71 @@
+Updated property [core/project].
+Activated service account credentials for: [ml-ci-cd-demo@appspot.gserviceaccount.com]
+WARNING:tensorflow:From /Users/davidtan/miniconda3/envs/ml-ci-cd-demo/lib/python3.6/site-packages/tensorflow/contrib/learn/python/learn/datasets/base.py:198: retry (from tensorflow.contrib.learn.python.learn.datasets.base) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use the retry module or similar alternatives.
+INFO:tensorflow:TF_CONFIG environment variable: {'environment': 'cloud', 'cluster': {}, 'job': {'args': ['--train-files', '/Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../data/adult.data.csv', '--eval-files', '/Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../data/adult.test.csv', '--job-dir', '/Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../output/census_20180524_173247', '--train-steps', '1000', '--eval-steps', '100'], 'job_name': 'trainer.task'}, 'task': {}}
+INFO:tensorflow:Using config: {'_model_dir': '/Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../output/census_20180524_173247', '_tf_random_seed': None, '_save_summary_steps': 100, '_save_checkpoints_steps': None, '_save_checkpoints_secs': 600, '_session_config': None, '_keep_checkpoint_max': 5, '_keep_checkpoint_every_n_hours': 10000, '_log_step_count_steps': 100,'_service': None, '_cluster_spec': <tensorflow.python.training.server_lib.ClusterSpec object at 0x1a22491f28>, '_task_type': 'worker', '_task_id': 0, '_global_id_in_cluster': 0, '_master': '', '_evaluation_master': '', '_is_chief': True, '_num_ps_replicas': 0, '_num_worker_replicas': 1}
+INFO:tensorflow:Running training and evaluation locally (non-distributed).
+INFO:tensorflow:Start train and evaluate loop. The evaluate will happen after 600 secs (eval_spec.throttle_secs) or training is finished.
+INFO:tensorflow:Calling model_fn.
+INFO:tensorflow:Done calling model_fn.
+INFO:tensorflow:Create CheckpointSaverHook.
+INFO:tensorflow:Graph was finalized.
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Saving checkpoints for 1 into /Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../output/census_20180524_173247/model.ckpt.
+INFO:tensorflow:loss = 545.4409, step = 1
+INFO:tensorflow:global_step/sec: 109.278
+INFO:tensorflow:loss = 36.79406, step = 101 (0.915 sec)
+INFO:tensorflow:global_step/sec: 309
+INFO:tensorflow:loss = 17.583416, step = 201 (0.324 sec)
+INFO:tensorflow:global_step/sec: 293.875
+INFO:tensorflow:loss = 20.426785, step = 301 (0.340 sec)
+INFO:tensorflow:global_step/sec: 292.857
+INFO:tensorflow:loss = 14.419741, step = 401 (0.341 sec)
+INFO:tensorflow:global_step/sec: 300.351
+INFO:tensorflow:loss = 52.30474, step = 501 (0.333 sec)
+INFO:tensorflow:global_step/sec: 305.338
+INFO:tensorflow:loss = 16.98514, step = 601 (0.327 sec)
+INFO:tensorflow:global_step/sec: 314.986
+INFO:tensorflow:loss = 18.759594, step = 701 (0.318 sec)
+INFO:tensorflow:global_step/sec: 305.728
+INFO:tensorflow:loss = 16.339935, step = 801 (0.327 sec)
+INFO:tensorflow:global_step/sec: 308.24
+INFO:tensorflow:loss = 13.27635, step = 901 (0.325 sec)
+INFO:tensorflow:Saving checkpoints for 1000 into /Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../output/census_20180524_173247/model.ckpt.
+INFO:tensorflow:Loss for final step: 16.81485.
+INFO:tensorflow:Calling model_fn.
+INFO:tensorflow:Done calling model_fn.
+INFO:tensorflow:Starting evaluation at 2018-05-24-09:33:00
+INFO:tensorflow:Graph was finalized.
+INFO:tensorflow:Restoring parameters from /Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../output/census_20180524_173247/model.ckpt-1000
+INFO:tensorflow:Running local_init_op.
+INFO:tensorflow:Done running local_init_op.
+INFO:tensorflow:Evaluation [10/100]
+INFO:tensorflow:Evaluation [20/100]
+INFO:tensorflow:Evaluation [30/100]
+INFO:tensorflow:Evaluation [40/100]
+INFO:tensorflow:Evaluation [50/100]
+INFO:tensorflow:Evaluation [60/100]
+INFO:tensorflow:Evaluation [70/100]
+INFO:tensorflow:Evaluation [80/100]
+INFO:tensorflow:Evaluation [90/100]
+INFO:tensorflow:Evaluation [100/100]
+INFO:tensorflow:Finished evaluation at 2018-05-24-09:33:01
+INFO:tensorflow:Saving dict for global step 1000: accuracy = 0.817, accuracy_baseline = 0.76325, auc = 0.873787, auc_precision_recall = 0.69704425, average_loss = 0.376788, global_step = 1000, label/mean = 0.23675, loss = 15.07152, prediction/mean = 0.23243684
+INFO:tensorflow:Performing the final export in the end of training.
+INFO:tensorflow:Calling model_fn.
+INFO:tensorflow:Done calling model_fn.
+INFO:tensorflow:Signatures INCLUDED in export for Classify: None
+INFO:tensorflow:Signatures INCLUDED in export for Regress: None
+INFO:tensorflow:Signatures INCLUDED in export for Predict: ['predict']
+INFO:tensorflow:Signatures EXCLUDED from export because they cannot be be served via TensorFlow Serving APIs:
+INFO:tensorflow:'serving_default' : Classification input must be a single string Tensor; got {'gender': <tf.Tensor 'Placeholder:0' shape=(?,) dtype=string>, 'race': <tf.Tensor 'Placeholder_1:0' shape=(?,) dtype=string>, 'education': <tf.Tensor 'Placeholder_2:0' shape=(?,) dtype=string>, 'marital_status': <tf.Tensor 'Placeholder_3:0' shape=(?,) dtype=string>, 'relationship': <tf.Tensor 'Placeholder_4:0' shape=(?,) dtype=string>, 'workclass': <tf.Tensor 'Placeholder_5:0' shape=(?,) dtype=string>, 'occupation': <tf.Tensor 'Placeholder_6:0' shape=(?,) dtype=string>, 'native_country': <tf.Tensor 'Placeholder_7:0' shape=(?,) dtype=string>, 'age': <tf.Tensor 'Placeholder_8:0' shape=(?,) dtype=float32>, 'education_num': <tf.Tensor 'Placeholder_9:0' shape=(?,) dtype=float32>, 'capital_gain': <tf.Tensor 'Placeholder_10:0' shape=(?,) dtype=float32>, 'capital_loss': <tf.Tensor 'Placeholder_11:0' shape=(?,) dtype=float32>, 'hours_per_week': <tf.Tensor 'Placeholder_12:0' shape=(?,) dtype=float32>}
+INFO:tensorflow:'classification' : Classification input must be a single string Tensor; got {'gender': <tf.Tensor 'Placeholder:0' shape=(?,) dtype=string>, 'race': <tf.Tensor 'Placeholder_1:0' shape=(?,) dtype=string>, 'education': <tf.Tensor 'Placeholder_2:0' shape=(?,) dtype=string>, 'marital_status': <tf.Tensor 'Placeholder_3:0' shape=(?,) dtype=string>, 'relationship': <tf.Tensor 'Placeholder_4:0' shape=(?,) dtype=string>, 'workclass': <tf.Tensor 'Placeholder_5:0' shape=(?,) dtype=string>, 'occupation': <tf.Tensor 'Placeholder_6:0' shape=(?,) dtype=string>, 'native_country': <tf.Tensor 'Placeholder_7:0' shape=(?,) dtype=string>, 'age': <tf.Tensor 'Placeholder_8:0' shape=(?,) dtype=float32>, 'education_num': <tf.Tensor 'Placeholder_9:0' shape=(?,) dtype=float32>, 'capital_gain': <tf.Tensor 'Placeholder_10:0' shape=(?,) dtype=float32>, 'capital_loss': <tf.Tensor 'Placeholder_11:0' shape=(?,) dtype=float32>, 'hours_per_week': <tf.Tensor 'Placeholder_12:0' shape=(?,) dtype=float32>}
+INFO:tensorflow:'regression' : Regression input must be a single string Tensor; got {'gender': <tf.Tensor 'Placeholder:0' shape=(?,) dtype=string>, 'race': <tf.Tensor 'Placeholder_1:0' shape=(?,) dtype=string>, 'education': <tf.Tensor 'Placeholder_2:0' shape=(?,) dtype=string>, 'marital_status': <tf.Tensor 'Placeholder_3:0' shape=(?,) dtype=string>, 'relationship': <tf.Tensor 'Placeholder_4:0' shape=(?,) dtype=string>, 'workclass': <tf.Tensor 'Placeholder_5:0' shape=(?,) dtype=string>, 'occupation': <tf.Tensor 'Placeholder_6:0' shape=(?,) dtype=string>, 'native_country': <tf.Tensor 'Placeholder_7:0' shape=(?,) dtype=string>, 'age': <tf.Tensor 'Placeholder_8:0' shape=(?,) dtype=float32>, 'education_num': <tf.Tensor 'Placeholder_9:0' shape=(?,) dtype=float32>, 'capital_gain': <tf.Tensor 'Placeholder_10:0' shape=(?,) dtype=float32>, 'capital_loss':<tf.Tensor 'Placeholder_11:0' shape=(?,) dtype=float32>, 'hours_per_week': <tf.Tensor 'Placeholder_12:0' shape=(?,) dtype=float32>}
+WARNING:tensorflow:Export includes no default signature!
+INFO:tensorflow:Restoring parameters from /Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../output/census_20180524_173247/model.ckpt-1000
+INFO:tensorflow:Assets added to graph.
+INFO:tensorflow:No assets to write.
+INFO:tensorflow:SavedModel written to: b"/Users/davidtan/Code/learning-materials/learn-machine-learning/ml-data-night/ml-ci-cd-demo/tf-estimator/bin/../output/census_20180524_173247/export/census/temp-b'1527154382'/saved_model.pb"

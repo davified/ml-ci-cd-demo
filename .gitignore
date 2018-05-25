@@ -3,4 +3,4 @@
 gcp_ml_ci_cd_demo.json
 **/build/
 .vscode
-tf-estimator/output/
+tf-estimator/output/*
