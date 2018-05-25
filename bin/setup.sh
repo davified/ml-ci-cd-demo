@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-# set -e
+set -e
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 project_directory="${current_directory}/.."
+export IS_SETUP='true'
 source ${current_directory}/common.sh
 
 if [[ $CI == "true" ]]; then
@@ -42,7 +43,13 @@ else
   fi
 fi
 
-if [[ $CI != 'true' ]]; then
+if [[ $CI == 'true' ]]; then
+  # install tensorflow on linux. instructions: https://www.tensorflow.org/install/install_linux
+  tf_binary_url='https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.7.0-cp36-cp36m-linux_x86_64.whl'
+  pip install --ignore-installed --upgrade $tf_binary_url
+else
+  source deactivate
+  source activate ${virtual_environment_name}
   python -m ipykernel install --user --name ${virtual_environment_name} --display-name "${virtual_environment_name}"
 fi
 

@@ -18,9 +18,17 @@ else
   export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
 fi
 
-echo "[INFO] Activating virtual environment"
-source deactivate
-source activate ${virtual_environment_name}
+if [[ $IS_SETUP != 'true' ]]; then
+  echo "[INFO] Activating virtual environment"
+  source deactivate
+  source activate ${virtual_environment_name}
+
+  echo "[INFO] Setting project to ${PROJECT_ID}"
+  gcloud config set project $PROJECT_ID
+
+  echo "[INFO] Activating service account"
+  gcloud auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}
+fi
 
 
 exit_if_not_ci() {
@@ -62,10 +70,3 @@ get_next_version_name_for() {
   # Next version to be deployed will be ${latest_version_plus_one}"
   echo ${latest_version_plus_one}
 }
-
-
-echo "[INFO] Setting project to ${PROJECT_ID}"
-gcloud config set project $PROJECT_ID
-
-echo "[INFO] Activating service account"
-gcloud auth activate-service-account --key-file ${GOOGLE_APPLICATION_CREDENTIALS}

@@ -14,15 +14,14 @@ before_install:
 - ./bin/setup.sh
 jobs:
   include:
-  - stage: unit tests
-    script:
-    - ./bin/run_unit_tests.sh ${MODEL_DIR}
+  # - stage: unit tests
+  #   script:
+  #   - ./bin/run_unit_tests.sh ${MODEL_DIR}
   - stage: train and evaluate model
     if: branch = deploy-to-staging
     script:
     - ./bin/get_data.sh
-    - ./bin/train_locally.sh ${MODEL_DIR}
-    # - ./bin/train_on_cloud.sh tf-estimator # cloud training option is available for tensorflow models
+    - ./bin/train.sh ${MODEL_DIR}
     - ./bin/evaluate.sh ${MODEL_DIR}
     - ./bin/upload_artifact.sh ${MODEL_DIR}
   - stage: deploy candidate model to staging

@@ -24,4 +24,4 @@ gcloud ml-engine local train  --package-path trainer \
                               --job-dir $output_dir \
                               --train-steps $TRAIN_STEPS \
                               --eval-steps 100 \
-                              &> $output_dir/log.txt  # comment out this line to see tensorflow logs in the console
+                              # &> $output_dir/log.txt  # comment out this line to see tensorflow logs in the console
