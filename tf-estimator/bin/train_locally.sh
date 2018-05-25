@@ -15,6 +15,8 @@ touch $output_dir/log.txt
 
 cd ${tf_estimator_dir}
 
+source activate ml-ci-cd-demo
+
 echo "[INFO] Training tensorflow model locally"
 gcloud ml-engine local train  --package-path trainer \
                               --module-name trainer.task \
