@@ -45,7 +45,7 @@ fi
 
 if [[ $CI == 'true' ]]; then
   # install tensorflow on linux. instructions: https://www.tensorflow.org/install/install_linux
-  tf_binary_url='https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.7.0-cp34-cp34m-linux_x86_64.whl'
+  tf_binary_url='https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.7.0-cp35-cp35m-linux_x86_64.whl'
   pip install --ignore-installed --upgrade $tf_binary_url
 else
   source deactivate
