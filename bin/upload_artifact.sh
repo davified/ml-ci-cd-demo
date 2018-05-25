@@ -8,7 +8,7 @@ source ${current_directory}/common.sh
 exit_if_directory_not_specified_as_first_argument ${model_directory}
 
 if [[ ${model_directory} == 'tf-estimator' ]]; then
-  echo "[INFO] tensorflow models trained on ml-engine using gcloud already artifacted in ML Engine"
+  echo "[INFO] tensorflow models trained on gcloud ml-engine are already artifacted in ML Engine"
   echo "[INFO] Nothing to upload. Skipping..."
   exit 0
 fi
