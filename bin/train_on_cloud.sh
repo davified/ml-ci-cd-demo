@@ -10,7 +10,7 @@ model_directory=${1%/} # remove any trailing slash
 
 if [[ $model_directory == 'tf-estimator' ]]; then
   cd $model_directory
-  ./bin/train_locally.sh
+  ./bin/train_on_cloud.sh
   cd - > /dev/null # mute output
 else
   echo "[INFO] Cloud training option not available for scikit-learn models"
