@@ -21,8 +21,7 @@ jobs:
     if: branch = deploy-to-staging
     script:
     - ./bin/get_data.sh
-    # - ./bin/train_locally.sh ${MODEL_DIR}
-    - ./bin/train_on_cloud.sh tf-estimator # cloud training option is available for tensorflow models
+    - ./bin/train.sh ${MODEL_DIR}
     - ./bin/evaluate.sh ${MODEL_DIR}
     - ./bin/upload_artifact.sh ${MODEL_DIR}
   - stage: deploy candidate model to staging

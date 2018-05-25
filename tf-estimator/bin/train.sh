@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Run distributed training job on GCP ML Engine
+
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 project_directory="$(echo $current_directory | sed 's/\/ml-ci-cd-demo.*/\/ml-ci-cd-demo/g')"
 output_dir="${project_directory}/tf-estimator/output"
