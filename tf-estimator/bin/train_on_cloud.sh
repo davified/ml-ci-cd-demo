@@ -11,6 +11,8 @@ JOB_NAME="$MODEL_NAME$(date '+%Y_%m_%d_%H_%M_%S')"
 TRAIN_DATA="${BUCKET}/data/adult.data.csv"
 EVAL_DATA="${BUCKET}/data/adult.test.csv"
 OUTPUT_PATH="${BUCKET}/tf-estimator-output/${JOB_NAME}"
+
+mkdir -p ${project_directory}/tf-estimator/build/
 echo ${OUTPUT_PATH} > ${project_directory}/tf-estimator/build/model_output_path.txt
 
 gcloud ml-engine jobs submit training ${JOB_NAME} \

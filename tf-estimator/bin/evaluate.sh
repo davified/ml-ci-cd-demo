@@ -12,6 +12,19 @@ auc_precision_recall_score=$(cat $output_dir/log.txt \
 
 echo "[INFO] AUC precision recall score     : ${auc_precision_recall_score}"
 echo "[INFO] AUC precision recall threshold : ${AUC_PRECISION_RECALL_THRESHOLD}"
+
+if [[ ${auc_precision_recall_score} == '' ]]; then
+ echo "[ERROR] AUC precision recall score is undefined"
+ echo "[ERROR] Exiting..."
+ exit 1
+fi
+
+if [[ ${AUC_PRECISION_RECALL_THRESHOLD} == '' ]]; then
+ echo "[ERROR] AUC precision recall threshold is undefined"
+ echo "[ERROR] Exiting..."
+ exit 1
+fi
+
 if (( $(echo "${auc_precision_recall_score} < ${AUC_PRECISION_RECALL_THRESHOLD}" | bc -l) )); then
   echo "[ERROR] Fail build because score is below threshold"
   echo "[ERROR] Exiting..."
