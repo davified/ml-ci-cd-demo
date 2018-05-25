@@ -4,7 +4,7 @@ current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 project_directory="$(echo $current_directory | sed 's/\/ml-ci-cd-demo.*/\/ml-ci-cd-demo/g')"
 
 MODEL_NAME="census_model" # to be replaced with MODEL_NAME in common.sh
-JOB_NAME="$MODEL_NAME$(date '+%d_%m_%Y_%H_%M_%S')"
+JOB_NAME="$MODEL_NAME$(date '+%Y_%m_%d_%H_%M_%S')"
 
 TRAIN_DATA="${BUCKET}/data/adult.data.csv"
 EVAL_DATA="${BUCKET}/data/adult.test.csv"
@@ -18,7 +18,7 @@ gcloud ml-engine jobs submit training ${JOB_NAME} \
     --package-path trainer/ \
     --region ${REGION} \
     --scale-tier STANDARD_1 \
-    --stream-logs
+    --stream-logs \
     -- \
     --train-files ${TRAIN_DATA} \
     --eval-files ${EVAL_DATA} \
