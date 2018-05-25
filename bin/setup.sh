@@ -36,8 +36,10 @@ if [[ ! -d "$HOME/miniconda3/envs/${virtual_environment_name}" ]]; then
   echo "[INFO] Creating ${virtual_environment_name} virtual environment and installing dependencies..."
   conda env create -f ${project_directory}/environment.yml
 else 
-  echo "[INFO] Updating dependencies..."
-  conda env update
+  if [[ $CI == '' ]]; then
+    echo "[INFO] Updating dependencies..."
+    conda env update # run this only locally to speed up build times
+  fi
 fi
 
 if [[ $CI != 'true' ]]; then
