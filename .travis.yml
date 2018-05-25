@@ -1,4 +1,6 @@
-language: generic
+language: python
+python:
+  - "3.6"
 env:
   global:
   - MODEL_DIR=tf-estimator PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH CLOUDSDK_CORE_DISABLE_PROMPTS=1
