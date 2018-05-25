@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-# set -e
+set -e
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 project_directory="${current_directory}/.."
+export IS_SETUP='true'
 source ${current_directory}/common.sh
 
 if [[ $CI == "true" ]]; then
@@ -43,6 +44,8 @@ else
 fi
 
 if [[ $CI != 'true' ]]; then
+  source deactivate
+  source activate ${virtual_environment_name}
   python -m ipykernel install --user --name ${virtual_environment_name} --display-name "${virtual_environment_name}"
 fi
 

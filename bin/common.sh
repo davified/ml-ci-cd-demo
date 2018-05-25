@@ -18,9 +18,11 @@ else
   export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
 fi
 
-echo "[INFO] Activating virtual environment"
-source deactivate
-source activate ${virtual_environment_name}
+if [[ $IS_SETUP == '' ]]; then
+  echo "[INFO] Activating virtual environment"
+  source deactivate
+  source activate ${virtual_environment_name}
+fi
 
 
 exit_if_not_ci() {
