@@ -47,6 +47,10 @@ if [[ $CI != 'true' ]]; then
   source deactivate
   source activate ${virtual_environment_name}
   python -m ipykernel install --user --name ${virtual_environment_name} --display-name "${virtual_environment_name}"
+
+  # install tensorflow on linux. instructions: https://www.tensorflow.org/install/install_linux
+  tf_binary_url='https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.7.0-cp34-cp34m-linux_x86_64.whl'
+  pip install --ignore-installed --upgrade $tf_binary_url
 fi
 
 echo "[INFO] Done!"
