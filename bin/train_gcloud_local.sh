@@ -15,5 +15,5 @@ if [[ ${model_directory} == 'scikit-model' ]]; then
 fi
 
 cd ${model_directory}
-./bin/train_locally.sh
+./bin/train_gcloud_local.sh
 cd - > /dev/null # mute output

@@ -13,6 +13,7 @@ JOB_NAME="$MODEL_NAME$(date '+%Y_%m_%d_%H_%M_%S')"
 TRAIN_DATA="${BUCKET}/data/adult.data.csv"
 EVAL_DATA="${BUCKET}/data/adult.test.csv"
 OUTPUT_PATH="${BUCKET}/tf-estimator-output/${JOB_NAME}"
+HYPERPARAMETER_CONFIG="${project_directory}/tf-estimator/hyperparameters.yml"
 
 mkdir -p ${project_directory}/tf-estimator/build/
 
@@ -22,6 +23,7 @@ gsutil cp ${project_directory}/tf-estimator/build/last_trained_model_output_path
 gcloud ml-engine jobs submit training ${JOB_NAME} \
     --job-dir ${OUTPUT_PATH} \
     --runtime-version 1.4 \
+    --configuration $HYPERPARAMETER_CONFIG \
     --module-name trainer.task \
     --package-path trainer/ \
     --region ${REGION} \

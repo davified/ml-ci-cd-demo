@@ -7,7 +7,7 @@ source ${current_directory}/common.sh
 
 JOB_NAME='batch_prediction'
 MODEL_NAME='census_tensorflow'
-INPUT_PATH="$BUCKET/data/tensorflow/adult.test.csv"
+INPUT_PATH="$BUCKET/data/tensorflow/census.json"
 OUTPUT_PATH="$BUCKET/predictions"
 DATA_FORMAT='text'
 

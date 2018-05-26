@@ -8,6 +8,7 @@ TRAIN_DATA="${current_directory}/../data/adult.data.csv"
 EVAL_DATA="${current_directory}/../data/adult.test.csv"
 output_dir="${tf_estimator_dir}/output"
 TRAIN_STEPS=1000
+HYPERPARAMETER_CONFIG="${tf_estimator_dir}/hyperparameters.yml"
 
 rm -rf $output_dir
 mkdir -p $output_dir
