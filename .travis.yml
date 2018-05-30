@@ -1,7 +1,7 @@
 language: generic
 env:
   global:
-  - MODEL_DIR=tf-estimator PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH CLOUDSDK_CORE_DISABLE_PROMPTS=1
+  - MODEL_DIR=scikit-nlp-model PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH CLOUDSDK_CORE_DISABLE_PROMPTS=1
 cache:
   directories:
   - "$HOME/google-cloud-sdk"
@@ -31,4 +31,4 @@ jobs:
   - stage: deploy model to prod
     if: branch = deploy-to-prod
     script:
-    - ./bin/deploy_to_prod.sh ${MODEL_DIR} $(cat ${MODEL_DIR}/bin/MODEL_PROD_VERSION.txt)
+    - ./bin/deploy_to_prod.sh
