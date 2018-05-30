@@ -4,4 +4,5 @@ set -e
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 
-nosetests -w "${current_directory}/../tests" -a 'statistical_test'
+echo "[INFO] Running model evaluation tests"
+nosetests -w "./tests" -a 'statistical_test'

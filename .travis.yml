@@ -31,4 +31,4 @@ jobs:
   - stage: deploy model to prod
     if: branch = deploy-to-prod
     script:
-    - ./bin/deploy_to_prod.sh
+    - ./bin/deploy_to_prod.sh ${MODEL_DIR}
