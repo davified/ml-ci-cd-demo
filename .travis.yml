@@ -22,7 +22,7 @@ jobs:
     script:
     - ./bin/get_data.sh
     - ./bin/train.sh ${MODEL_DIR}
-    - cd scikit-nlp-model && nosetests -w ./tests -a 'statistical_test' && cd -
+    - ./bin/evaluate.sh ${MODEL_DIR}
     - ./bin/upload_artifact.sh ${MODEL_DIR}
   - stage: deploy candidate model to staging
     if: branch = deploy-to-staging
