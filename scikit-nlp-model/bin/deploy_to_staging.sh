@@ -4,6 +4,7 @@ set -e
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
+project_directory="$(echo $current_directory | sed 's/\/ml-ci-cd-demo.*/\/ml-ci-cd-demo/g')"
 # exit_if_not_ci
 
 model_status_code=$(gcloud beta ml-engine models list | grep -c ${MODEL_NAME} || true) # 1 if model exists, 0 otherwise
@@ -28,3 +29,4 @@ echo "[INFO] Describe model versions"
 gcloud beta ml-engine versions describe $latest_version_plus_one \
     --model $MODEL_NAME
 
+${project_directory}/bin/smoke_test.sh ${latest_version_plus_one}
