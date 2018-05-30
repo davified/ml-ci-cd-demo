@@ -10,7 +10,7 @@ export virtual_environment_name="ml-ci-cd-demo"
 export REGION="us-central1" # set to the same region where we're running Cloud ML Engine jobs
 export PROJECT_ID="ml-ci-cd-demo"
 export BUCKET="gs://${PROJECT_ID}-mlengine"
-export MODEL_NAME="census_sklearn_pipeline"
+export MODEL_NAME="nlp_sentiment"
 
 if [[ $CI == 'true' ]]; then
   export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
