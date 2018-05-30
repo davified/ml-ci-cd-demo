@@ -41,7 +41,7 @@ exit_if_not_ci() {
 
 exit_if_directory_not_specified_as_first_argument() {
   if [[ $1 == '' ]]; then
-    echo "[ERROR] Please specify directory (e.g. scikit-model or tf-estimator) as first argument to this shell script"
+    echo "[ERROR] Please specify directory (e.g. scikit-model, scikit-nlp-model or tf-estimator) as first argument to this shell script"
     echo "[ERROR] Exiting..."
     exit 1
   fi
