@@ -4,4 +4,4 @@ gcp_ml_ci_cd_demo.json
 **/build/
 .vscode
 tf-estimator/output/*
-scikit-nlp-model/data/review_400000_samples.json
+data/review_400000_samples.json

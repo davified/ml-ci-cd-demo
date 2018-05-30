@@ -13,4 +13,4 @@ if ! gsutil ls | grep -q ${BUCKET}/; then
 fi
 
 echo "[INFO] Copying model binaries to bucket"
-gsutil cp ${model_directory}/build/model.pkl ${BUCKET}/nlp_sentiment/model.pkl
+gsutil cp ${model_directory}/build/model.pkl ${BUCKET}/nlp_sentiment/build/model.pkl

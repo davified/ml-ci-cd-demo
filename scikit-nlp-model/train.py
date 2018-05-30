@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.model_selection import train_test_split
 
 current_dir  = os.path.dirname(os.path.abspath(__file__))
-texts, labels, _ = get_data_and_labels('{}/data/review_400000_samples.json'.format(current_dir))
+texts, labels, _ = get_data_and_labels('{}/../data/review_400000_samples.json'.format(current_dir))
 
 data_train, data_val, labels_train, labels_val = train_test_split(texts, labels, random_state=0)
 

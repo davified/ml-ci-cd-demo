@@ -14,7 +14,7 @@ if [[ ${model_status_code} == 0 ]]; then
 fi
 
 echo "[INFO] Deploying model to GCP ML Engine"
-DEPLOYMENT_SOURCE="${BUCKET}/nlp_sentiment"
+DEPLOYMENT_SOURCE="${BUCKET}/nlp_sentiment/build"
 FRAMEWORK="SCIKIT_LEARN"
 
 latest_version_plus_one=$(get_next_version_name_for ${MODEL_NAME})
