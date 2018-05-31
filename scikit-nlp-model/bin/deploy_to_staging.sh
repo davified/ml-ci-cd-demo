@@ -5,7 +5,7 @@ set -e
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 source ${current_directory}/common.sh
 project_directory="$(echo $current_directory | sed 's/\/ml-ci-cd-demo.*/\/ml-ci-cd-demo/g')"
-# exit_if_not_ci
+exit_if_not_ci
 
 model_status_code=$(gcloud beta ml-engine models list | grep -c ${MODEL_NAME} || true) # 1 if model exists, 0 otherwise
 if [[ ${model_status_code} == 0 ]]; then

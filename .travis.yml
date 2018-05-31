@@ -14,9 +14,9 @@ before_install:
 - ./bin/setup.sh
 jobs:
   include:
-  # - stage: unit tests
-  #   script:
-  #   - ./bin/run_unit_tests.sh ${MODEL_DIR}
+  - stage: unit tests
+    script:
+    - ./bin/run_unit_tests.sh ${MODEL_DIR}
   - stage: train and evaluate model
     if: branch = deploy-to-staging
     script:
