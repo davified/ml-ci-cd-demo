@@ -5,6 +5,5 @@ set -e
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 
 echo "[INFO] Running model evaluation tests..."
-cd $current_directory/..
-nosetests -w "./tests" -a 'statistical_test'
-cd -
+# nosetests -w "./tests" -a 'statistical_test'
+python -m unittest tests/test_model_evaluation.py 

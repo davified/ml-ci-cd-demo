@@ -27,4 +27,4 @@ import os, unittest
 
 class TestDataLoader(unittest.TestCase):
   def test_should_load_data_and_return_features_labels(self):
-    self.assertEquals(1,1)
+    self.assertEqual(1,1)

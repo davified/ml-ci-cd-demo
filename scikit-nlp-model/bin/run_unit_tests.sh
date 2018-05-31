@@ -4,4 +4,5 @@ set -e
 
 current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
 
-nosetests -w "${current_directory}/../tests" --ignore-files='test_model_evaluation'
+python -m unittest tests/test_data_loader.py 
+# nosetests -w "${current_directory}/../tests" --ignore-files='test_model_evaluation'
