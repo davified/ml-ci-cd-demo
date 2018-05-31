@@ -25,14 +25,12 @@ class TestModelEvaluation(unittest.TestCase):
     y_predicted = self.model.predict(self.X_val)
     recall = metrics.recall_score(self.y_val, y_predicted.round())
 
-    print('recall score: {}'.format(recall))
     self.assertTrue(recall > RECALL_THRESHOLD, "recall of {} is below threshold of {}".format(recall, RECALL_THRESHOLD))
 
   def test_should_have_precision_score_above_minimum_threshold(self):
     y_predicted = self.model.predict(self.X_val)
     precision = metrics.precision_score(self.y_val, y_predicted.round())
 
-    print('precision score: {}'.format(precision))
     self.assertTrue(precision > PRECISION_THRESHOLD, "precision of {} is below threshold of {}".format(precision, PRECISION_THRESHOLD))
 
   # add statistical_test property tag so that we can skip these tests in run_unit_tests.sh
