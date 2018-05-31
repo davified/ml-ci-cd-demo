@@ -25,3 +25,4 @@ if not os.path.exists(build_directory):
 pickle.dump(text_clf, open('./{}/model.pkl'.format(build_directory), 'wb'))
 
 print('Model trained and saved at {}/{}'.format(os.getcwd(), build_directory))
+
