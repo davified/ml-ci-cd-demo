@@ -16,24 +16,27 @@
 - `bin/deploy_to_staging.sh`
 - `bin/upload_artifact.sh`
 
-
 ### Some manual configuration:
-For collaborators on this project
+
+#### For collaborators on this project:
 - generate credentials for GCP project [here](https://console.cloud.google.com/apis/credentials?project=ml-ci-ci-demo) -> select 'Service Account Key' -> enter details, select JSON and download it, and move/rename it to `./client_secret.json` (i.e. `ml-ci-cd-demo/client_secret.json`)
+
+#### For collaborators on this project:
+- [Sign up/sign in](https://console.cloud.google.com/) to your Google Cloud Platform account 
+- Create a project on the [GCP console](https://console.cloud.google.com), and replace `PROJECT_ID` in `bin/common.sh` with your project name
+- Generate `client_secret.json` credentials (see instructions in previous section)
+- Click on these links and enable the following APIs:
+  - [Cloud Resource Manager API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=ml-ci-ci-demo)
+  - [ML Engine API](https://console.cloud.google.com/apis/api/ml.googleapis.com/overview)
 
 
 ### Resources
 - [Tasks board](https://github.com/davified/ml-ci-cd-demo/projects/1)
 - [CI](https://www.travis-ci.org/davified/ml-ci-cd-demo)
 - [GCP project dashboard](https://console.cloud.google.com/home/dashboard?project=ml-ci-cd-demo)
-
-
-### Notes/log of any manual steps
-- Enable Google Cloud Resource Manager API by visiting: https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=ml-ci-ci-demo
-
-
-### Pros and Cons 
-
-#### Travis-CI
-- pros: easy to get started
-- cons: no file-whitelisting functionality. Even updating a README triggers the CI pipeline (i.e. the training of a new model). (Work around for this: **commit and push to `deploy-to-prod` branch to "manually" trigger train and deploy stages on CI**)
+- Demo client app
+  - [Source](https://github.com/davified/ml-ci-cd-demo-react-client)
+  - [Demo](https://pycon-ml-demo.herokuapp.com/)
+- Server app
+  - [Source](https://github.com/davified/ml-ci-cd-demo-express-server)
+  - [Demo](https://ml-ci-cd-demo-server.herokuapp.com/)
