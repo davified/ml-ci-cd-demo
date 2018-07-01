@@ -2,15 +2,13 @@
 
 set -e
 
-model_directory=${1%/} # remove any trailing slash
-current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-source ${current_directory}/common.sh
-# exit_if_not_ci
-exit_if_directory_not_specified_as_first_argument ${model_directory}
+source ./bin/common.sh
+exit_if_not_ci
+exit_if_directory_not_specified_as_first_argument $1
 
 if ! gsutil ls | grep -q ${BUCKET}/; then
   gsutil mb -l ${REGION} ${BUCKET}
 fi
 
 echo "[INFO] Copying model binaries to bucket"
-gsutil cp ${model_directory}/build/model.pkl ${BUCKET}/nlp_sentiment/build/model.pkl
+gsutil cp $1/build/model.pkl ${BUCKET}/nlp_sentiment/build/model.pkl

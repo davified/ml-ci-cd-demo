@@ -2,13 +2,10 @@
 
 set -e
 
-current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-project_directory="$current_directory/.."
-source ${current_directory}/common.sh
-MODEL_NAME='nlp_sentiment'
+source ./bin/common.sh
 exit_if_not_ci
 
-version_to_deploy_to_prod=$(cat $project_directory/config/SKLEARN_NLP_PROD_VERSION.txt)
+version_to_deploy_to_prod=$(cat ./config/SKLEARN_NLP_PROD_VERSION.txt)
 
 current_deployed_version=$(get_current_default_version_for ${MODEL_NAME})
 
@@ -20,4 +17,4 @@ gcloud ml-engine versions set-default ${version_to_deploy_to_prod} --model=${MOD
 echo "[INFO] Listing model(s) and default version name(s)"
 gcloud ml-engine models list
 
-# ${current_directory}/smoke_test.sh ${version_to_deploy_to_prod}
+./bin/smoke_test.sh ${version_to_deploy_to_prod}
