@@ -15,7 +15,7 @@ class TestModelEvaluation(unittest.TestCase):
       self.model = pickle.load(model_file)
 
     # Load validation data
-    data_filepath = os.path.join(tests_dir, '../../data/review_400000_samples.json')
+    data_filepath = os.path.join(tests_dir, '../../data/reviews_400K.json')
 
     data, labels, _filenames = get_data_and_labels(data_filepath)
 

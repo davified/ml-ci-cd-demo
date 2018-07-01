@@ -4,4 +4,4 @@ client_secret.json
 **/build/
 .vscode
 tf-estimator/output/*
-data/review_400000_samples.json
+data/reviews_400K.json
