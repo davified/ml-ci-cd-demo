@@ -10,16 +10,16 @@ Here's the sentiment analysis model which we've deployed using this pipeline: ht
 2. Setup dev environment: `bin/setup.sh`
 3. To activate virtual environment: `source activate ml-ci-cd-demo` (To deactivate virtual environment: `source deactivate`)
 4. Commands that you can run locally:
-- `jupyter notebook` (start jupyter notebook for development)
-- `bin/run_unit_tests.sh scikit-nlp-model`
-- `bin/get_data.sh scikit-nlp-model`
-- `bin/train.sh scikit-nlp-model`
-- `bin/evaluate.sh scikit-nlp-model`
-- `bin/smoke_test.sh MODEL_VERSION` (e.g. `bin/smoke_test.sh v2`)
+  - `jupyter notebook` (start jupyter notebook for development)
+  - `bin/run_unit_tests.sh scikit-nlp-model`
+  - `bin/get_data.sh scikit-nlp-model`
+  - `bin/train.sh scikit-nlp-model`
+  - `bin/evaluate.sh scikit-nlp-model`
+  - `bin/smoke_test.sh MODEL_VERSION` (e.g. `bin/smoke_test.sh v2`)
 5. Commands that are meant to be run by CI
-- `bin/deploy_to_staging.sh`
-- `bin/deploy_to_prod.sh`
-- `bin/upload_artifact.sh`
+  - `bin/deploy_to_staging.sh`
+  - `bin/deploy_to_prod.sh`
+  - `bin/upload_artifact.sh`
 
 ### Deployment
 
