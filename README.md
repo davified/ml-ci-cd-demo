@@ -18,6 +18,7 @@ Here's the sentiment analysis model which we've deployed using this pipeline: ht
 - `bin/smoke_test.sh MODEL_VERSION` (e.g. `bin/smoke_test.sh v2`)
 5. Commands that are meant to be run by CI
 - `bin/deploy_to_staging.sh`
+- `bin/deploy_to_prod.sh`
 - `bin/upload_artifact.sh`
 
 ### Deployment
