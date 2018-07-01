@@ -3,7 +3,7 @@
 set -e
 
 source ./bin/common.sh
-# exit_if_not_ci
+exit_if_not_ci
 
 if [[ $1 == '' ]]; then
   echo "[ERROR] Please specify version of model to be deployed to PROD (e.g. v3) as first argument to this shell script"

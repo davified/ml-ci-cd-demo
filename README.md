@@ -1,28 +1,31 @@
 # Machine Learning CI/CD Pipeline Demo
 
+### Getting started
+
+1. Clone repo: `git clone https://www.github.com/davified/ml-ci-cd-demo`
+2. Setup dev environment: `bin/setup.sh`
+3. To activate virtual environment: `source activate ml-ci-cd-demo` (To deactivate virtual environment: `source deactivate`)
+4. Commands that you can run locally:
+- `jupyter notebook` (start jupyter notebook for development)
+- `bin/run_unit_tests.sh scikit-nlp-model`
+- `bin/get_data.sh scikit-nlp-model`
+- `bin/train.sh scikit-nlp-model`
+- `bin/evaluate.sh scikit-nlp-model`
+- `bin/smoke_test.sh MODEL_VERSION` (e.g. `bin/smoke_test.sh v2`)
+5. Commands that are meant to be run by CI
+- `bin/deploy_to_staging.sh`
+- `bin/upload_artifact.sh`
+
+
+### Some manual configuration:
+For collaborators on this project
+- generate credentials for GCP project [here](https://console.cloud.google.com/apis/credentials?project=ml-ci-ci-demo) -> select 'Service Account Key' -> enter details, select JSON and download it, and move/rename it to `./client_secret.json` (i.e. `ml-ci-cd-demo/client_secret.json`)
+
+
 ### Resources
 - [Tasks board](https://github.com/davified/ml-ci-cd-demo/projects/1)
 - [CI](https://www.travis-ci.org/davified/ml-ci-cd-demo)
 - [GCP project dashboard](https://console.cloud.google.com/home/dashboard?project=ml-ci-cd-demo)
-
-### Getting started
-
-1. Get into project directory: `cd ml-ci-cd-demo`
-2. Setup dev environment: `bin/setup.sh`
-3. Some manual configuration:
-- generate credentials for GCP project [here](https://console.cloud.google.com/apis/credentials?project=ml-ci-ci-demo) -> select 'Service Account Key' -> enter details, select JSON and download it, and move/rename it to `./client_secret.json` (i.e. `ml-ci-cd-demo/client_secret.json`)
-4. To activate virtual environment: `source activate ml-ci-cd-demo`
-5. To deactivate virtual environment: `source deactivate`
-6. Commands that you can run locally
-- `bin/train_locally.sh`
-- `bin/evaluate.sh`
-- `bin/predict.sh`
-- `bin/smoke_test.sh`
-- `jupyter notebook` (start jupyter notebook for development)
-
-7. Commands that are meant to be run by CI (If you want to run these locally, prefix it with `CI=true` (e.g. CI=true bin/deploy_to_staging.sh))
-- `bin/deploy_to_staging.sh`
-- `bin/upload_artifact.sh`
 
 
 ### Notes/log of any manual steps
