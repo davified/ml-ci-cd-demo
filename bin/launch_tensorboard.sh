@@ -9,8 +9,7 @@ if [[ $1 == '' ]]; then
   exit 1
 fi
 
-current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-source ${current_directory}/common.sh
+source ./bin/common.sh
 
 JOB_NAME=$1
 OUTPUT_PATH="${BUCKET}/tf-estimator-output/${JOB_NAME}"

@@ -2,9 +2,6 @@
 
 set -e
 
-current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-project_directory="$(echo $current_directory | sed 's/\/ml-ci-cd-demo.*/\/ml-ci-cd-demo/g')"
-
 export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 export virtual_environment_name="ml-ci-cd-demo"
 export REGION="us-central1" # set to the same region where we're running Cloud ML Engine jobs
@@ -15,7 +12,7 @@ export MODEL_NAME="nlp_sentiment"
 if [[ $CI == 'true' ]]; then
   export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client_secret.json"
 else
-  export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/client_secret.json"
+  export GOOGLE_APPLICATION_CREDENTIALS="./client_secret.json"
 fi
 
 if [[ $IS_SETUP != 'true' ]]; then

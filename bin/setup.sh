@@ -2,10 +2,8 @@
 
 set -e
 
-current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-project_directory="${current_directory}/.."
+source ./bin/common.sh
 export IS_SETUP='true'
-source ${current_directory}/common.sh
 
 if [[ $CI == "true" ]]; then
   miniconda_download_url="https://repo.anaconda.com/miniconda/Miniconda3-4.5.1-Linux-x86_64.sh"
@@ -37,7 +35,7 @@ fi
 
 if [[ ! -d "$HOME/miniconda3/envs/${virtual_environment_name}" ]]; then
   echo "[INFO] Creating ${virtual_environment_name} virtual environment and installing dependencies..."
-  conda env create -f ${project_directory}/environment.yml
+  conda env create -f ./environment.yml
 else 
   if [[ $CI == '' ]]; then
     echo "[INFO] Updating dependencies..."
