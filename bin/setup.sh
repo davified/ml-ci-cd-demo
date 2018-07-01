@@ -22,6 +22,8 @@ export PATH=$HOME/google-cloud-sdk/bin:$HOME/miniconda3/bin:$PATH
 
 if [[ -f $HOME/miniconda3/bin/conda ]]; then
   echo "[INFO] OK Found conda!"
+  echo "[INFO] Updating conda..."
+  conda update -n base conda -y
 else
   if [[ ! -f "$HOME/miniconda3_installer/install.sh"  ]]; then
     echo "[INFO] Downloading miniconda installation script..."
