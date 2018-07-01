@@ -1,6 +1,6 @@
 **/__pycache__
 .ipynb_checkpoints/
-gcp_ml_ci_cd_demo.json
+client_secret.json
 **/build/
 .vscode
 tf-estimator/output/*

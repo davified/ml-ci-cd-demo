@@ -10,7 +10,7 @@ cache:
   timeout: 1000
 before_install:
 - openssl aes-256-cbc -K $encrypted_64a1b7c39bac_key -iv $encrypted_64a1b7c39bac_iv
-  -in gcp_ml_ci_cd_demo.json.enc -out ./gcp_ml_ci_cd_demo.json -d
+  -in client_secret.json.enc -out ./client_secret.json -d
 - ./bin/setup.sh
 jobs:
   include:

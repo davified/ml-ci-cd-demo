@@ -13,9 +13,9 @@ export BUCKET="gs://${PROJECT_ID}-mlengine"
 export MODEL_NAME="nlp_sentiment"
 
 if [[ $CI == 'true' ]]; then
-  export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/gcp_ml_ci_cd_demo.json"
+  export GOOGLE_APPLICATION_CREDENTIALS="${TRAVIS_BUILD_DIR}/client_secret.json"
 else
-  export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/gcp_ml_ci_cd_demo.json"
+  export GOOGLE_APPLICATION_CREDENTIALS="${project_directory}/client_secret.json"
 fi
 
 if [[ $IS_SETUP != 'true' ]]; then
