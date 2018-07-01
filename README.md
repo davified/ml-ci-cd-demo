@@ -16,6 +16,14 @@
 - `bin/deploy_to_staging.sh`
 - `bin/upload_artifact.sh`
 
+### Deployment
+
+All models are deployed to GCP ML Engine. As training and deployment are time-consuming steps which we may not want to run with every commit, we've made training and deployment manual steps in our CI pipelines. 
+
+As manual deployments is not a supported feature in TravisCI, we created a workaround to simulate manual deployments - by committing and push to 2 branches: `deploy-to-staging` and `deploy-to-prod`. To deploy to staging:
+- merge all your changes onto the `deploy-to-staging` branch (by running `git checkout deploy-to-staging && git merge master`)
+- push your changes (`git push origin deploy-to-staging`, or simply `git push`)
+
 ### Some manual configuration:
 
 #### For collaborators on this project:
