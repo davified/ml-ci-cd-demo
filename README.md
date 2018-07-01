@@ -1,5 +1,9 @@
 # Machine Learning CI/CD Pipeline Demo
 
+A demo continuous delivery pipeline for machine learning models.
+
+Here's the sentiment analysis model which we've deployed using this pipeline: https://pycon-ml-demo.herokuapp.com/
+
 ### Getting started
 
 1. Clone repo: `git clone https://www.github.com/davified/ml-ci-cd-demo`
