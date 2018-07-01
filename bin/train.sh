@@ -2,12 +2,9 @@
 
 set -e
 
-current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-source ${current_directory}/common.sh
+source ./bin/common.sh
 exit_if_directory_not_specified_as_first_argument $1
 
-model_directory=${1%/} # remove any trailing slash
-
-cd $model_directory
-./bin/train.sh
-cd - > /dev/null # mute output
+cd $1
+echo "[INFO] Training model..."
+python train.py

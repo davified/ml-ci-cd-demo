@@ -10,12 +10,12 @@ echo "[INFO] Getting data..."
 
 mkdir -p ./data
 
-curl https://storage.googleapis.com/ml-ci-cd-demo-mlengine/nlp_sentiment/data/reviews_400K.json -o ./data/reviews_400K.json
+# curl https://storage.googleapis.com/ml-ci-cd-demo-mlengine/nlp_sentiment/data/reviews_400K.json -o ./data/reviews_400K.json
 
-echo "[INFO] Creating test fixtures..."
-NO_OF_SAMPLES=10
-FIXTURES_DIR=$MODEL_DIR/tests/fixtures
+echo "[INFO] Creating test fixtures"
+copy_slice_of_data 10 $MODEL_DIR/tests/fixtures
 
-head -n ${NO_OF_SAMPLES} ./data/reviews_400K.json > ${FIXTURES_DIR}/review_${NO_OF_SAMPLES}_samples.json
+echo "[INFO] Creating small subset of training data for local development"
+copy_slice_of_data 100 ./data
 
 echo "[INFO] Done!"

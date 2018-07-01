@@ -2,10 +2,10 @@
 
 set -e
 
-current_directory="$( cd "$(dirname "$0")" ; pwd -P )"
-source ${current_directory}/common.sh
+source ./bin/common.sh
 exit_if_directory_not_specified_as_first_argument $1
 
 cd $1
-./bin/evaluate.sh
-cd - > /dev/null # mute output
+echo "[INFO] Running model evaluation tests..."
+# nosetests -w "./tests" -a 'statistical_test'
+python -m unittest tests/test_model_evaluation.py 

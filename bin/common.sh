@@ -47,6 +47,21 @@ exit_if_directory_not_specified_as_first_argument() {
   fi
 }
 
+copy_slice_of_data() {
+  if [[ $1 == '' || $2 == '' ]]; then
+    echo "[ERROR] Usage: copy_slice_of_data NO_OF_SAMPLES TARGET_DIR"
+    echo "[ERROR] Exiting..."
+    exit 1
+  fi
+
+  local no_of_samples=$1
+  local target_dir=$2
+  local target_file=${target_dir}/review_${no_of_samples}_samples.json
+
+  echo "[INFO] Copying ${no_of_samples} samples from ./data/reviews_400K.json to create ${target_file}"
+  head -n ${no_of_samples} ./data/reviews_400K.json > ${target_file}
+}
+
 get_latest_model_version_for() {
   echo $(gcloud ml-engine versions list --model=$1 |
   tail -n+2           |
