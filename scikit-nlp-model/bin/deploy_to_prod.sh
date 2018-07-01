@@ -20,4 +20,4 @@ gcloud ml-engine versions set-default ${version_to_deploy_to_prod} --model=${MOD
 echo "[INFO] Listing model(s) and default version name(s)"
 gcloud ml-engine models list
 
-${current_directory}/smoke_test.sh ${version_to_deploy_to_prod}
+# ${current_directory}/smoke_test.sh ${version_to_deploy_to_prod}
