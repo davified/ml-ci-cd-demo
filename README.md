@@ -38,6 +38,7 @@ As manual deployments is not a supported feature in TravisCI, we created a worka
 - [Sign up/sign in](https://console.cloud.google.com/) to your Google Cloud Platform account 
 - Create a project on the [GCP console](https://console.cloud.google.com), and replace `PROJECT_ID` in `bin/common.sh` with your project name
 - Generate `client_secret.json` credentials (see instructions in previous section)
+- Encrypt client_secret.json: `travis encrypt-file ./client_secret.json --add`
 - Click on these links and enable the following APIs:
   - [Cloud Resource Manager API](https://console.developers.google.com/apis/api/cloudresourcemanager.googleapis.com/overview?project=ml-ci-ci-demo)
   - [ML Engine API](https://console.cloud.google.com/apis/api/ml.googleapis.com/overview)
